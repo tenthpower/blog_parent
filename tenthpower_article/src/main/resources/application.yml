@@ -18,7 +18,7 @@ eureka:
     instance:
         appname: tenthpower-article
         prefer-ip-address: true
-        ip-address: 134.175.91.16
+        #    ip-address: 134.175.91.16
         instanceId: tenthpower-article:${spring.application.instance-id:${random.value}}
         # eureka客户需要多长时间发送心跳给eureka服务器，表明它仍然活着,默认为30 秒
         lease-renewal-interval-in-seconds: 30
@@ -34,7 +34,6 @@ ribbon: #参考地址：http://blog.didispace.com/spring-cloud-ribbon-failed-ret
     MaxAutoRetries: 2 #对当前服务的重试次数（第一次分配给9082的时候，如果404，则再重试MaxAutoRetries次，如果还是404，则切换到其他服务MaxAutoRetriesNextServer决定）
     # 最多重试多少台服务器
     MaxAutoRetriesNextServer: 3 #切换服务的次数(比如本次请求分配给9082处理，发现404，则切换分配给9081处理，如果还是404，则返回404给客户端）
-
 spring:
     application:
         name: tenthpower-article
@@ -53,3 +52,13 @@ spring:
         generate‐ddl: true
     redis:
         host: 134.175.91.16
+    security: #参考资料https://blog.csdn.net/rickiyeat/article/details/72639596
+        basic:
+            enabled: true
+            path: /swagger-ui.html
+        user:
+            name: admin
+            password: admin
+    profiles:
+        # active: dev,no-liquibase # 未配置dev的配置文件
+        include: swagger
