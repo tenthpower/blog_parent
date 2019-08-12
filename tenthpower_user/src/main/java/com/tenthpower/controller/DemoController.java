@@ -23,7 +23,7 @@ public class DemoController {
      * @param adminVo
      * @return
      */
-    @PostMapping(value="/tenthpower_user/api/user/login")
+    @PostMapping(value="/api/user/login")
     @ApiOperation(value="登陆成功")
     public Result login(@RequestBody AdminVo adminVo){
         Result result = new Result(true,StatusCode.OK,"登陆成功");
@@ -37,7 +37,7 @@ public class DemoController {
      * 模拟获取用户信息
      * @return
      */
-    @GetMapping(value="/tenthpower_user/api/user/info")
+    @GetMapping(value="/api/user/info")
     @ApiOperation(value="用户信息")
     public Result info(){
         Result result = new Result(true,StatusCode.OK,"用户信息");
@@ -55,7 +55,7 @@ public class DemoController {
      * @param adminVo
      * @return
      */
-    @PostMapping(value="/tenthpower_user/api/user/logout")
+    @PostMapping(value="/api/user/logout")
     @ApiOperation(value="用户信息")
     public Result logout(@RequestBody AdminVo adminVo){
         Result result = new Result(true,StatusCode.OK,"用户信息");
