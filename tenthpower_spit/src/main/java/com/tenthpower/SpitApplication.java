@@ -4,9 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.core.env.Environment;
+import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -15,9 +18,10 @@ import java.net.UnknownHostException;
  * 用户
  * @EnableEurekaClient这个注解只用于Eureka做为服务发现组件，而@EnableDiscoveryClient则可用于所有的服务发现组件
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)//mongodb不能解决驱动类，解决方法排除datasource
 @EnableDiscoveryClient
 @EnableFeignClients
+@EnableCaching
 public class SpitApplication {
     private static final Logger log = LoggerFactory.getLogger(SpitApplication.class);
 
