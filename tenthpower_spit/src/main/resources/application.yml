@@ -38,7 +38,7 @@ ribbon: #参考地址：http://blog.didispace.com/spring-cloud-ribbon-failed-ret
 
 spring:
     application:
-        name: tenthpower-article
+        name: tenthpower-spit
     main:
         allow-bean-definition-overriding: true
 #    datasource:

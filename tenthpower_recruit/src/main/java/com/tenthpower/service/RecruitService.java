@@ -85,7 +85,7 @@ public class RecruitService {
      */
     public List<RecruitVo> newlist() throws Exception {
         List<RecruitVo> result = new ArrayList<RecruitVo>();
-        List<Recruit> sqlResult = recruitDao.findTop12ByStateNotOrderByCreatetimeDesc(VoConstants.RECRUIT_STATE);
+        List<Recruit> sqlResult = recruitDao.findTop12ByStateNotOrderByCreatetimeDesc(VoConstants.RECRUIT_STATE_NORMAL);
         result = BeanCopierEx.copy(sqlResult,RecruitVo.class);
         return result;
     }

@@ -72,7 +72,7 @@ public class EnterpriseService {
      */
     public List<EnterpriseVo> hotList() throws Exception {
         List<EnterpriseVo> result = new ArrayList<EnterpriseVo>();
-        List<Enterprise> sqlResult = enterpriseDao.findByIshot(VoConstants.ENTERPRISE_ISHOT);
+        List<Enterprise> sqlResult = enterpriseDao.findByIshot(VoConstants.ENTERPRISE_ISHOT_HOT);
         result = BeanCopierEx.copy(sqlResult, EnterpriseVo.class);
         return result;
     }

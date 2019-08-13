@@ -1,12 +1,18 @@
 package com.tenthpower.service;
 
-import com.tenthpower.dao.SplitDao;
-import com.tenthpower.pojo.Split;
+import com.tenthpower.constants.VoConstants;
+import com.tenthpower.dao.SpitDao;
+import com.tenthpower.dto.qa.ProblemVo;
+import com.tenthpower.dto.spit.SpitVo;
+import com.tenthpower.pojo.Spit;
+import com.tenthpower.util.BeanCopierEx;
 import com.tenthpower.util.IdWorker;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -15,14 +21,16 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @Service
 public class SplitService {
+
     private final Logger log = LoggerFactory.getLogger(SplitService.class);
 
     @Autowired
-    private SplitDao spitDao;
+    private SpitDao spitDao;
 
     @Autowired
     private IdWorker idWorker;
@@ -34,8 +42,11 @@ public class SplitService {
      * 查询全部
      * @return
      */
-    public List<Split> findAll(){
-        return spitDao.findAll();
+    public List<SpitVo> findAll() throws Exception {
+        List<SpitVo> result = new ArrayList<SpitVo>();
+        List<Spit> sqlResult = spitDao.findAll();
+        result = BeanCopierEx.copy(sqlResult, SpitVo.class);
+        return result;
     }
 
     /**
@@ -43,39 +54,45 @@ public class SplitService {
      * @param id
      * @return
      */
-    public Split findById(String id){
-        return spitDao.findById(id).get();
+    public SpitVo findById(String id){
+        SpitVo result = new SpitVo();
+        Spit sqlResult = spitDao.findById(id).get();
+        BeanCopierEx.copy(sqlResult,result);
+        return result;
     }
 
     /**
      * 添加
-     * @param spit
+     * @param spitVo
      */
-    public void save(Split spit){
-        spit.set_id(idWorker.nextId()+"");
+    public void save(SpitVo spitVo){
+        Spit spit = new Spit();
+        BeanCopierEx.copy(spitVo,spit);
+        spit.set_id(idWorker.nextId());
         spit.setPublishtime(new Date());//发布日期
         spit.setVisits(0);//浏览量
         spit.setShare(0);//分享数
         spit.setThumbup(0);//点赞数
         spit.setComment(0);//回复数
-        spit.setState("1");//状态
-        //如果当前添加的吐槽，有父节点，那么父节点的吐槽回复数要加一
-        if(spit.getParentid()!=null && !"".equals(spit.getParentid())){
+        spit.setState(VoConstants.SPLIT_STATE_SEE);// 状态:可见
+        // 如果当前添加的吐槽，有父节点，那么父节点的吐槽回复数要加一
+        if (StringUtils.isNotBlank(spit.getParentid())) {
             Query query = new Query();
             query.addCriteria(Criteria.where("_id").is(spit.getParentid()));
             Update update = new Update();
             update.inc("comment", 1);
             mongoTemplate.updateFirst(query, update, "spit");
         }
-
         spitDao.save(spit);
     }
 
     /**
      * 修改
-     * @param spit
+     * @param spitVo
      */
-    public void update(Split spit){
+    public void update(SpitVo spitVo){
+        Spit spit = new Spit();
+        BeanCopierEx.copy(spitVo, spit);
         spitDao.save(spit);
     }
 
@@ -94,9 +111,14 @@ public class SplitService {
      * @param size
      * @return
      */
-    public Page<Split> findByParentid(String parentid, int page, int size){
-        Pageable pageable = PageRequest.of(page-1, size);
-        return spitDao.findByParentid(parentid, pageable);
+    public Page<SpitVo> findByParentid(String parentid, int page, int size) throws Exception {
+        List<SpitVo> spitVolist = new ArrayList<SpitVo>();
+        PageRequest pageRequest = PageRequest.of(page - 1, size);
+        Page<Spit> sqlResult = spitDao.findByParentid(parentid, pageRequest);
+        List<Spit> sqlContent = sqlResult.getContent();
+        spitVolist = BeanCopierEx.copy(sqlContent,SpitVo.class);
+        Page<SpitVo> result = new PageImpl(spitVolist, sqlResult.getPageable(), sqlResult.getTotalElements());
+        return  result;
     }
 
     /**

@@ -101,7 +101,7 @@ public class ArticleService {
     @Transactional
     public void examine(String id){
         // 文章设置成审核通过
-        articleDao.updateState(id, VoConstants.ARTICLE_STATE);
+        articleDao.updateState(id, VoConstants.ARTICLE_STATE_PASS);
         boolean flag = redisTemplate.delete( "article_" + id );
         log.info("审核通过:从redis 里面删除key=[article_{}]的数据结果=[{}]", id, flag);
     }
