@@ -159,7 +159,7 @@ public class EmailUtils {
      * jodd 发送邮件
      */
     public static String sendEmailByJodd(EmailVo emailVo) throws Exception {
-        log.info(MessageFormat.format("EmailUtils 开始发送邮件，邮件配置是{0},邮件信息是{2}", emailConfig, emailVo));
+        log.info(MessageFormat.format("EmailUtils 开始发送邮件，邮件配置是{0},邮件信息是{1}", emailConfig, emailVo));
         String result = "";
         SendMailSession session = null;
         try {
