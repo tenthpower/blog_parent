@@ -62,3 +62,7 @@ spring:
     profiles:
         # active: dev,no-liquibase # 未配置dev的配置文件
         include: swagger
+    data:
+        mongodb:
+            host: 134.175.91.16
+            database: recruitdb
