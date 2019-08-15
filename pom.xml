@@ -19,7 +19,7 @@
         <module>tenthpower_spit</module>
         <module>tenthpower_search</module>
         <module>tenthpower_user</module>
-        <module>tenthpower_sms</module>
+        <module>tenthpower_rabbitmq</module>
         <module>tenthpower_friend</module>
         <module>tenthpower_demo</module>
     </modules>
@@ -30,8 +30,9 @@
         <version>2.1.0.RELEASE</version>
         <relativePath/>
     </parent>
-
     <properties>
+        <project.build.sourceEncoding>UTF‐8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF‐8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>

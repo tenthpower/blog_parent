@@ -1,12 +1,11 @@
 package com.tenthpower;
 
-import com.tenthpower.util.IdWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -16,13 +15,13 @@ import java.net.UnknownHostException;
  * 邮件短信
  * @EnableEurekaClient这个注解只用于Eureka做为服务发现组件，而@EnableDiscoveryClient则可用于所有的服务发现组件
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class) // 暂时该服务不需要数据库
 @EnableDiscoveryClient
-public class SmsApplication {
-    private static final Logger log = LoggerFactory.getLogger(SmsApplication.class);
+public class RabbitMqApplication {
+    private static final Logger log = LoggerFactory.getLogger(RabbitMqApplication.class);
 
     public static void main(String[] args) throws UnknownHostException {
-        SpringApplication app = new SpringApplication(SmsApplication.class);
+        SpringApplication app = new SpringApplication(RabbitMqApplication.class);
         Environment env = app.run(args).getEnvironment();
         String protocol = "http";
         if (env.getProperty("server.ssl.key-store") != null) {
