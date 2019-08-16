@@ -33,7 +33,7 @@ public class SendEmailReceiver {
         log.info("邮件采用=[{}]的形式发送。", emailConfig.getProtocol());
         if (StringUtils.equalsIgnoreCase(emailConfig.getProtocol(), "SMTP")) {
             try {
-                EmailUtils.sendEmailByJodd(emailVo);
+                EmailUtils.sendEmailByJavax(emailVo);//TODO Jodd 发送有问题
             } catch (Exception e) {
                 log.info("邮件采用=[sendEmailByJodd]的发送邮件出现异常，异常原因=[{}]。", e);
             }

@@ -52,7 +52,7 @@ public class EmailUtils {
     private EmailConfig config;
 
     @Autowired
-    private static EmailConfig emailConfig;
+    private static EmailConfig emailConfig=new EmailConfig();;
 
     /**
      * 于工具类是使用静态方式调用
@@ -62,6 +62,28 @@ public class EmailUtils {
         log.info("EmailUtils init..");
         emailConfig = config;
     }
+
+//    public static void main(String[] args) throws Exception {
+//        emailConfig.setSmtpFromAccount("17621421619@163.com");
+//        emailConfig.setSmtpFromPwd("SFlQNzY5ODgyMC4u");
+//        emailConfig.setSmtpFromUseName("和彦鹏");
+//        emailConfig.setSmtpFromHost("smtp.163.com");
+//        emailConfig.setSmtpFromPort("465");
+//        emailConfig.setSmtpIsFromSsl(false);
+//        emailConfig.setSmtpIsAnnoymous(false);
+//        EmailVo emailVo = new EmailVo();
+//        List<ReceiverPeoperVo> receiverPeoperVos = new ArrayList<>();
+//        ReceiverPeoperVo peo = new ReceiverPeoperVo();
+//        peo.setReceiverAccount("heyanpeng@k2workflow.com.cn");
+//        peo.setReceiverNickName("yenrocHo");
+//        receiverPeoperVos.add(peo);
+//        emailVo.setReceiverPeoperVos(receiverPeoperVos);
+//        emailVo.setSign("html");
+//        emailVo.setContent("邮件的正文内容");
+//        emailVo.setTitle("邮件的标题");
+//        sendEmailByJavax(emailVo);
+//    }
+
     
     /**
      * javax.mail：发送邮件
