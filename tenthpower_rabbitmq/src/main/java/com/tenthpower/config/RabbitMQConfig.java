@@ -31,4 +31,10 @@ public class RabbitMQConfig {
         log.info("初始化Queue=[{}]...", QueueConstant.QUEUE_EMAIL_SEND);
         return new Queue(QueueConstant.QUEUE_EMAIL_SEND);
     }
+
+    @Bean
+    public Queue sendSmsQueue() {
+        log.info("初始化Queue=[{}]...", QueueConstant.QUEUE_SMS_SEND);
+        return new Queue(QueueConstant.QUEUE_SMS_SEND);
+    }
 }

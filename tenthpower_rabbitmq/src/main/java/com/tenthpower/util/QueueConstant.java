@@ -12,4 +12,6 @@ public class QueueConstant {
     public final static String QUEUE_DEMO = "demoQueue";
 
     public final static String QUEUE_EMAIL_SEND = "sendEmailQueue";
+
+    public final static String QUEUE_SMS_SEND = "sendSmsQueue";
 }
