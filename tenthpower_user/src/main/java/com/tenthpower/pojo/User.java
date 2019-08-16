@@ -18,6 +18,10 @@ public class User {
 
     private String password;
 
+    private String nickname;
+
+    private String avatar;
+
     private int followcount;
 
     private int fanscount;
@@ -52,6 +56,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public int getFollowcount() {

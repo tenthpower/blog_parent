@@ -3,12 +3,15 @@ package com.tenthpower.controller;
 import com.tenthpower.dto.user.AdminVo;
 import com.tenthpower.entity.Result;
 import com.tenthpower.entity.StatusCode;
+import com.tenthpower.pojo.Admin;
 import com.tenthpower.service.AdminService;
+import com.tenthpower.util.JwtUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -18,6 +21,9 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     /**
      * 查询全部
@@ -80,9 +86,14 @@ public class AdminController {
      */
     @PostMapping(value="/login")
     public Result login(@RequestBody Map<String,String> loginMap){
-        Boolean flag = adminService.findByLoginnameAndPassword(loginMap.get("loginname"), loginMap.get("password"));
-        if(flag){
-            return new Result(true,StatusCode.OK,"登陆成功");
+        AdminVo adminVo = adminService.findByLoginnameAndPassword(loginMap.get("loginname"), loginMap.get("password"));
+        if(null != adminVo){
+            // 生成token
+            String token = jwtUtil.createJWT(adminVo.getId(), adminVo.getLoginname(), "admin");
+            Map<String, Object> map=new HashMap();
+            map.put("token",token);
+            map.put("info",adminVo);
+            return new Result(true,StatusCode.OK,"登陆成功", map);
         } else {
             return new Result(false,StatusCode.LOGINERROR,"用户名或密码错误");
         }

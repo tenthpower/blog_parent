@@ -60,12 +60,14 @@ public class UserService {
      * @param password
      * @return
      */
-    public Boolean findByTelNoAndPassword(String telNo,String password){
+    public UserVo findByTelNoAndPassword(String telNo,String password){
         User user = userDao.findByTelNo(telNo);
         if(user!=null && encoder.matches(password,user.getPassword())){
-            return true;
-        }else{
-            return false;
+            UserVo userVo = new UserVo();
+            BeanCopierEx.copy(user, userVo);
+            return userVo;
+        } else {
+            return null;
         }
     }
 

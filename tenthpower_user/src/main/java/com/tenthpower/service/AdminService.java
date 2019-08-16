@@ -78,13 +78,15 @@ public class AdminService {
      * @param password
      * @return
      */
-    public Boolean findByLoginnameAndPassword(String loginname, String
+    public AdminVo findByLoginnameAndPassword(String loginname, String
             password){
         Admin admin = adminDao.findByLoginname(loginname);
         if (admin != null && encoder.matches(password, admin.getPassword())) {
-            return true;
+            AdminVo result = new AdminVo();
+            BeanCopierEx.copy(admin,result);
+            return result;
         } else {
-            return false;
+            return null;
         }
     }
 }
