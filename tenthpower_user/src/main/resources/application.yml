@@ -52,6 +52,8 @@ spring:
         database: MySQL
         show‐sql: true
         generate‐ddl: true
+    redis:
+        host: 134.175.91.16
     security: #参考资料https://blog.csdn.net/rickiyeat/article/details/72639596
         basic:
             enabled: true

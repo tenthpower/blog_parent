@@ -19,21 +19,6 @@ public class DemoController {
 
 
     /**
-     * 模拟登陆api
-     * @param adminVo
-     * @return
-     */
-    @PostMapping(value="/api/user/login")
-    @ApiOperation(value="登陆成功")
-    public Result login(@RequestBody AdminVo adminVo){
-        Result result = new Result(true,StatusCode.OK,"登陆成功");
-        Map<String,Object> data = new HashMap<String,Object>();
-        data.put("token","admin");
-        result.setData(data);
-        return result;
-    }
-
-    /**
      * 模拟获取用户信息
      * @return
      */

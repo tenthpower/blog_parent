@@ -16,6 +16,8 @@ public class User {
 
     private String telNo;
 
+    private String password;
+
     private int followcount;
 
     private int fanscount;
@@ -42,6 +44,14 @@ public class User {
 
     public void setTelNo(String telNo) {
         this.telNo = telNo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getFollowcount() {

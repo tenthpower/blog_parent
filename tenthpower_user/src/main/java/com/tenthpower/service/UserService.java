@@ -8,6 +8,7 @@ import com.tenthpower.util.DateUtil;
 import com.tenthpower.util.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +23,9 @@ public class UserService {
     @Autowired
     private IdWorker idWorker;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     /**
      *  增加用户
      * @param userVo 用户信息
@@ -30,12 +34,12 @@ public class UserService {
     public void add(UserVo userVo, String code) {
         //判断验证码是否正确
         String syscode =(String)redisTemplate.opsForValue().get("smscode_" + userVo.getTelNo());
-        if(syscode==null){
-            throw new RuntimeException("请点击获取短信验证码");
-        }
-        if(!syscode.equals(code)){
-            throw new RuntimeException("验证码输入不正确");
-        }
+//        if(syscode==null){
+//            throw new RuntimeException("请点击获取短信验证码");
+//        }
+//        if(!syscode.equals(code)){
+//            throw new RuntimeException("验证码输入不正确");
+//        }
 
         userVo.setId(idWorker.nextId());
         userVo.setFollowcount(0);//关注数
@@ -46,6 +50,23 @@ public class UserService {
         userVo.setLastdate(DateUtil.getCurDate());//最后登陆日期
         User user = new User();
         BeanCopierEx.copy(userVo, user);
+        user.setPassword(encoder.encode(user.getPassword()));// 加密密码
         userDao.save(user);
     }
+
+    /**
+     * 根据手机号和密码查询用户
+     * @param telNo
+     * @param password
+     * @return
+     */
+    public Boolean findByTelNoAndPassword(String telNo,String password){
+        User user = userDao.findByTelNo(telNo);
+        if(user!=null && encoder.matches(password,user.getPassword())){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }

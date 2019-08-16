@@ -19,6 +19,9 @@ public class UserVo implements Serializable {
     @ApiModelProperty(value = "手机号")
     private String telNo;
 
+    @ApiModelProperty(value = "密码")
+    private String password;
+
     @ApiModelProperty(value = "关注数")
     private int followcount;
 

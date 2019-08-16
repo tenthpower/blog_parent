@@ -6,6 +6,7 @@ import com.tenthpower.pojo.Admin;
 import com.tenthpower.util.BeanCopierEx;
 import com.tenthpower.util.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,6 +20,10 @@ public class AdminService {
 
     @Autowired
     private IdWorker idWorker;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
 
     /**
      * 查询所有的
@@ -47,6 +52,7 @@ public class AdminService {
         Admin admin = new Admin();
         BeanCopierEx.copy(adminVo, admin);
         admin.setId(idWorker.nextId());//设置ID
+        admin.setPassword(encoder.encode(admin.getPassword()));// 加密密码
         adminDao.save(admin);
     }
 
@@ -64,5 +70,21 @@ public class AdminService {
      */
     public void deleteById(String id){
         adminDao.deleteById(id);
+    }
+
+    /**
+     * 根据登陆名和密码查询
+     * @param loginname
+     * @param password
+     * @return
+     */
+    public Boolean findByLoginnameAndPassword(String loginname, String
+            password){
+        Admin admin = adminDao.findByLoginname(loginname);
+        if (admin != null && encoder.matches(password, admin.getPassword())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
