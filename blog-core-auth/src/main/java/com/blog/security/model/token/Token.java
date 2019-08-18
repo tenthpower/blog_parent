@@ -1,7 +1,8 @@
 package com.blog.security.model.token;
 
 /**
- * @author Levin
+ * Token 接口，被获取token，刷新token使用
+ * @author 和彦鹏
  */
 public interface Token {
 

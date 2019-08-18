@@ -1,10 +1,10 @@
 package com.blog.rest;
 
+import com.blog.contant.CommonContant;
 import com.blog.dto.user.SysAdminVo;
 import com.blog.dto.user.SysRoleVo;
 import com.blog.security.auth.token.extractor.TokenExtractor;
 import com.blog.security.auth.token.verifier.TokenVerifier;
-import com.blog.security.config.WebSecurityConfig;
 import com.blog.security.exceptions.InvalidTokenException;
 import com.blog.security.model.UserContext;
 import com.blog.security.model.token.RawAccessToken;
@@ -62,7 +62,7 @@ public class DemoController {
 
     @GetMapping("/api/auth/refresh_token")
     public Token refreshToken(HttpServletRequest request) {
-        String tokenPayload = tokenExtractor.extract(request.getHeader(WebSecurityConfig.TOKEN_HEADER_PARAM));
+        String tokenPayload = tokenExtractor.extract(request.getHeader(CommonContant.TOKEN_HEADER_PARAM));
         RawAccessToken rawToken = new RawAccessToken(tokenPayload);
         RefreshToken refreshToken = RefreshToken.create(rawToken, "battcn").orElseThrow(() -> new InvalidTokenException("Token验证失败"));
 

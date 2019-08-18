@@ -17,11 +17,11 @@ import java.net.UnknownHostException;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class UserApplication {
-    private static final Logger log = LoggerFactory.getLogger(UserApplication.class);
+public class AuthApplication {
+    private static final Logger log = LoggerFactory.getLogger(AuthApplication.class);
 
     public static void main(String[] args) throws UnknownHostException {
-        SpringApplication app = new SpringApplication(UserApplication.class);
+        SpringApplication app = new SpringApplication(AuthApplication.class);
         Environment env = app.run(args).getEnvironment();
         String protocol = "http";
         if (env.getProperty("server.ssl.key-store") != null) {

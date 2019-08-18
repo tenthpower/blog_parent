@@ -19,14 +19,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *  权限验证失败的Handler
+ *  权限认证失败的Handler
  */
 @Component
-public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
+public class AwareAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
     @Autowired
     private ObjectMapper mapper;
-
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
@@ -34,8 +33,7 @@ public class MyAuthenticationFailureHandler implements AuthenticationFailureHand
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         if (e instanceof BadCredentialsException) {
-            mapper.writeValue(response.getWriter(), new Result(false, StatusCode.UNAUTHORIZED,"Invalid username or " +
-                    "password"));
+            mapper.writeValue(response.getWriter(), new Result(false, StatusCode.UNAUTHORIZED,"Invalid username or password"));
         } else if (e instanceof ExpiredTokenException) {
             mapper.writeValue(response.getWriter(), new Result(false, StatusCode.UNAUTHORIZED,"Token has expired"));
         } else if (e instanceof AuthMethodNotSupportedException) {

@@ -39,12 +39,12 @@ public class LoginAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
     private BCryptPasswordEncoder encoder;
+
 	@Autowired
     private SysAdminService sysAdminService;
+
 	@Autowired
     private SysRoleService sysRoleService;
-
-	
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

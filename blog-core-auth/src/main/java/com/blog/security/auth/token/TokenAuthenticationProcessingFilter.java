@@ -1,5 +1,6 @@
 package com.blog.security.auth.token;
 
+import com.blog.contant.CommonContant;
 import com.blog.security.auth.AuthenticationToken;
 import com.blog.security.auth.token.extractor.TokenExtractor;
 import com.blog.security.config.WebSecurityConfig;
@@ -23,7 +24,7 @@ import java.io.IOException;
 
 /**
  * 执行Token的验证
- * 
+ *
  * @author Levin
  *
  * 2018-02-02
@@ -31,9 +32,9 @@ import java.io.IOException;
 public class TokenAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
     private final AuthenticationFailureHandler failureHandler;
     private final TokenExtractor tokenExtractor;
-    
+
     @Autowired
-    public TokenAuthenticationProcessingFilter(AuthenticationFailureHandler failureHandler, 
+    public TokenAuthenticationProcessingFilter(AuthenticationFailureHandler failureHandler,
             TokenExtractor tokenExtractor, RequestMatcher matcher) {
         super(matcher);
         this.failureHandler = failureHandler;
@@ -43,7 +44,7 @@ public class TokenAuthenticationProcessingFilter extends AbstractAuthenticationP
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {
-        String tokenPayload = request.getHeader(WebSecurityConfig.TOKEN_HEADER_PARAM);
+        String tokenPayload = request.getHeader(CommonContant.TOKEN_HEADER_PARAM);
         RawAccessToken token = new RawAccessToken(tokenExtractor.extract(tokenPayload));
         return getAuthenticationManager().authenticate(new AuthenticationToken(token));
     }

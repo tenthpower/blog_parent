@@ -31,7 +31,6 @@ import java.util.List;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // 获取token 的参数key
-    public static final String TOKEN_HEADER_PARAM = "Authorization";
     private static final String FORM_BASED_LOGIN_ENTRY_POINT = "/api/admin/login";
     private static final String TOKEN_BASED_AUTH_ENTRY_POINT = "/api/**";
     private static final String MANAGE_TOKEN_BASED_AUTH_ENTRY_POINT = "/manage/**";
