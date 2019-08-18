@@ -15,12 +15,12 @@
         <module>blog-quartz</module>
         <module>blog-search</module>
         <module>blog-service</module>
-        <module>blog-user</module>
         <module>blog-friend</module>
         <module>blog-security</module>
         <module>blog-core-registry</module>
         <module>blog-core-gateway</module>
         <module>blog-core-config</module>
+        <module>blog-core-auth</module>
     </modules>
 
     <parent>
