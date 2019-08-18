@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -33,10 +34,12 @@ public class AwareAuthenticationFailureHandler implements AuthenticationFailureH
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         if (e instanceof BadCredentialsException) {
-            mapper.writeValue(response.getWriter(), new Result(false, StatusCode.UNAUTHORIZED,"Invalid username or password"));
+            mapper.writeValue(response.getWriter(), new Result(false, StatusCode.UNAUTHORIZED,"Invalid userName or password"));
         } else if (e instanceof ExpiredTokenException) {
             mapper.writeValue(response.getWriter(), new Result(false, StatusCode.UNAUTHORIZED,"Token has expired"));
         } else if (e instanceof AuthMethodNotSupportedException) {
+            mapper.writeValue(response.getWriter(),  new Result(false, StatusCode.UNAUTHORIZED,e.getMessage()));
+        } else if (e instanceof AuthenticationServiceException) {
             mapper.writeValue(response.getWriter(),  new Result(false, StatusCode.UNAUTHORIZED,e.getMessage()));
         } else {
             mapper.writeValue(response.getWriter(), new Result(false, StatusCode.UNAUTHORIZED,"Authentication failed"));

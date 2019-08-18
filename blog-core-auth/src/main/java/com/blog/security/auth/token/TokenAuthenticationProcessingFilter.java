@@ -3,7 +3,6 @@ package com.blog.security.auth.token;
 import com.blog.contant.CommonContant;
 import com.blog.security.auth.AuthenticationToken;
 import com.blog.security.auth.token.extractor.TokenExtractor;
-import com.blog.security.config.WebSecurityConfig;
 import com.blog.security.model.token.RawAccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

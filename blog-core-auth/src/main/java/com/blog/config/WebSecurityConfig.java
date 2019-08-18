@@ -1,4 +1,4 @@
-package com.blog.security.config;
+package com.blog.config;
 
 import com.blog.security.RestAuthenticationEntryPoint;
 import com.blog.security.auth.login.LoginAuthenticationProvider;
