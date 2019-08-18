@@ -2,7 +2,7 @@ package com.blog.service;
 
 import com.blog.dao.AdminDao;
 import com.blog.dto.user.AdminVo;
-import com.blog.pojo.Admin;
+import com.blog.pojo.SysAdmin;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +24,12 @@ public class AdminService {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
-
     /**
      * 查询所有的
      */
     public List<AdminVo> findAll() throws Exception {
         List<AdminVo> result = new ArrayList<AdminVo>();
-        List<Admin> sqlResult = adminDao.findAll();
+        List<SysAdmin> sqlResult = adminDao.findAll();
         result = BeanCopierEx.copy(sqlResult,AdminVo.class);
         return result;
     }
@@ -40,7 +39,7 @@ public class AdminService {
      */
     public AdminVo findById(String id){
         AdminVo result = new AdminVo();
-        Admin sqlResult = adminDao.findById(id).get();
+        SysAdmin sqlResult = adminDao.findById(id).get();
         BeanCopierEx.copy(sqlResult,result);
         return result;
     }
@@ -49,7 +48,7 @@ public class AdminService {
      * 添加
      */
     public void add(AdminVo adminVo){
-        Admin admin = new Admin();
+        SysAdmin admin = new SysAdmin();
         BeanCopierEx.copy(adminVo, admin);
         admin.setId(idWorker.nextId());//设置ID
         admin.setPassword(encoder.encode(admin.getPassword()));// 加密密码
@@ -60,7 +59,7 @@ public class AdminService {
      * 更新
      */
     public void update(AdminVo adminVo){
-        Admin admin = new Admin();
+        SysAdmin admin = new SysAdmin();
         BeanCopierEx.copy(adminVo, admin);
         adminDao.save(admin);
     }
@@ -80,7 +79,7 @@ public class AdminService {
      */
     public AdminVo findByLoginnameAndPassword(String loginName, String
             password){
-        Admin admin = adminDao.findByLoginName(loginName);
+        SysAdmin admin = adminDao.findByLoginName(loginName);
         if (admin != null && encoder.matches(password, admin.getPassword())) {
             AdminVo result = new AdminVo();
             BeanCopierEx.copy(admin,result);

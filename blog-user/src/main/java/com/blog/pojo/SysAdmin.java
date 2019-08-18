@@ -1,12 +1,21 @@
 package com.blog.pojo;
 
+import com.blog.dto.SqlBaseDto;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
+/**
+ * 后台管理账号
+ */
 @Entity
-@Table(name="tb_admin")
-public class Admin {
+@Table(name="sysAdmin")
+public class SysAdmin extends SqlBaseDto implements Serializable {
+
+    private static final long serialVersionUID = 7081912784857107857L;
+
     @Id
     private String id;
 

@@ -12,7 +12,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * 招聘微服务
+ * 权限微服务
  */
 @SpringBootApplication
 @EnableDiscoveryClient
