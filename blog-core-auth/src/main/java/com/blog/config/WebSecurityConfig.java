@@ -30,12 +30,6 @@ import java.util.List;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    // 获取token 的参数key
-    private static final String FORM_BASED_LOGIN_ENTRY_POINT = "/api/admin/login";
-    private static final String TOKEN_BASED_AUTH_ENTRY_POINT = "/api/**";
-    private static final String MANAGE_TOKEN_BASED_AUTH_ENTRY_POINT = "/manage/**";
-    private static final String TOKEN_REFRESH_ENTRY_POINT = "/api/auth/refresh_token";
-
     private final RestAuthenticationEntryPoint authenticationEntryPoint;
     private final AuthenticationSuccessHandler successHandler;
     private final AuthenticationFailureHandler failureHandler;
@@ -54,13 +48,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private LoginProcessingFilter buildLoginProcessingFilter() throws Exception {
-        LoginProcessingFilter filter = new LoginProcessingFilter(FORM_BASED_LOGIN_ENTRY_POINT, successHandler, failureHandler);
+        LoginProcessingFilter filter = new LoginProcessingFilter("/api/auth/login", successHandler, failureHandler);
         filter.setAuthenticationManager(super.authenticationManager());
         return filter;
     }
 
     private TokenAuthenticationProcessingFilter buildTokenAuthenticationProcessingFilter() throws Exception {
-        List<String> list = Lists.newArrayList(TOKEN_BASED_AUTH_ENTRY_POINT, MANAGE_TOKEN_BASED_AUTH_ENTRY_POINT);
+        List<String> list = Lists.newArrayList("/api/**", "/management/**");
         SkipPathRequestMatcher matcher = new SkipPathRequestMatcher(list);
         TokenAuthenticationProcessingFilter filter = new TokenAuthenticationProcessingFilter(failureHandler, tokenExtractor, matcher);
         filter.setAuthenticationManager(super.authenticationManager());
@@ -86,18 +80,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .authenticationEntryPoint(this.authenticationEntryPoint)
                 .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and() // 以下不需要认证
+                    .authorizeRequests()
+                    .antMatchers("/api/auth/login").permitAll() // 登陆
+                    .antMatchers("/api/auth/refresh_token").permitAll() // 刷新token
+                .and() // 以下需要认证
+                    .authorizeRequests()
+                    .antMatchers("/api/**").authenticated() //
+                    .antMatchers("/management/**").hasAnyRole("ROLE_ADMIN")
                 .and()
-                .authorizeRequests()
-                .antMatchers(FORM_BASED_LOGIN_ENTRY_POINT).permitAll() // Login end-point
-                .antMatchers(TOKEN_REFRESH_ENTRY_POINT).permitAll() // Token refresh end-point
-                .and()
-                .authorizeRequests()
-                .antMatchers(TOKEN_BASED_AUTH_ENTRY_POINT).authenticated() // Protected API End-points
-                .antMatchers(MANAGE_TOKEN_BASED_AUTH_ENTRY_POINT).hasAnyRole("ADMIN")
-                .and()
-                .addFilterBefore(buildLoginProcessingFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(buildTokenAuthenticationProcessingFilter(), UsernamePasswordAuthenticationFilter.class);
+                    .addFilterBefore(buildLoginProcessingFilter(), UsernamePasswordAuthenticationFilter.class)
+                    .addFilterBefore(buildTokenAuthenticationProcessingFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 }
