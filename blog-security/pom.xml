@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>blog-token</artifactId>
+    <artifactId>blog-security</artifactId>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
