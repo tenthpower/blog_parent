@@ -1,0 +1,13 @@
+server: 
+  port: 9001
+spring: 
+  application:  
+    name: tenthpower_recruit-recruit #指定服务名
+  datasource:  
+    driverClassName: [driverName]
+    url: [url]
+    username: root
+    password: h123456
+  jpa: 
+    database: MySQL
+    show-sql: true
