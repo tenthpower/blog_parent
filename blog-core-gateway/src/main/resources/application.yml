@@ -1,0 +1,23 @@
+server:
+    port: 9011
+spring:
+    application:
+        name: blog-gateway #指定服务名
+eureka:
+    client:
+        serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址
+            defaultZone: http://127.0.0.1:10000/eureka/
+zuul:
+    routes:
+        tensquare‐gathering: #活动
+            path: /gathering/** #配置请求URL的请求规则
+            serviceId: tensquare‐gathering #指定Eureka注册中心中的服务id
+        tensquare‐article: #文章
+            path: /article/** #配置请求URL的请求规则
+            serviceId: tensquare‐article #指定Eureka注册中心中的服务id
+        tensquare‐base: #基础
+            path: /base/** #配置请求URL的请求规则
+            serviceId: tensquare‐base #指定Eureka注册中心中的服务id
+        tensquare‐friend: #交友
+            path: /friend/** #配置请求URL的请求规则
+            serviceId: tensquare‐friend #指定Eureka注册中心中的服务id
