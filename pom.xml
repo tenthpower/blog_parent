@@ -13,6 +13,7 @@
         <module>blog-feign</module>
         <module>blog-rabbitmq</module>
         <module>blog-quartz</module>
+        <module>blog-websocket</module>
         <module>blog-search</module>
         <module>blog-service</module>
         <module>blog-friend</module>
