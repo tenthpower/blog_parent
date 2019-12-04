@@ -2,22 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2c45b9a-3eb5-483b-97b5-deecb6510aa2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/STOMPWebSocket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/CustomMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/config/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/config/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/jquery-3.2.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/jquery-3.4.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/static/websocket_stomp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/templates/demo22.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/说明.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/ChatInfoUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/FileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/MessageSendUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WebSocketInfoUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/ChatInfoVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/GroupChatInfoVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/PrivatelyChatInfoVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/WebSocketApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/WebSocketApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/说明.md" beforeDir="false" afterPath="$PROJECT_DIR$/说明.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-websocket/说明.md" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/说明.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/blog-service/target/" />
     <ignored path="$PROJECT_DIR$/blog-core-config/target/" />
@@ -46,45 +41,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/config/application-dev.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/STOMPWebSocket.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="117">
@@ -96,26 +52,77 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="367">
+              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog-websocket/说明.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="516">
-                <caret line="99" column="6" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
+              <first_editor relative-caret-position="50">
+                <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/websocket_stomp.html">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WebSocketInfoUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+            <state relative-caret-position="275">
+              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="9" />
               <folding>
-                <element signature="n#style#0;n#h2#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#449#450#0" expanded="true" />
+                <element signature="e#513#514#0" expanded="true" />
+                <element signature="method#addGroupChatInfo#0;class#WebSocketInfoUtil#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/GroupChatInfoVo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/MessageSendUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/FileUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/ChatInfoUtil.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -125,8 +132,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -177,7 +184,16 @@
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/CustomMessage.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/websocket_stomp.html" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/STOMPWebSocket.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/ChatInfoUtil.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/FileUtil.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/MessageSendUtil.java" />
         <option value="$PROJECT_DIR$/blog-websocket/说明.md" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/ChatInfoVo.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/GroupChatInfoVo.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/PrivatelyChatInfoVo.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WebSocketInfoUtil.java" />
       </list>
     </option>
   </component>
@@ -208,6 +224,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -233,12 +250,48 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="vo" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -257,20 +310,21 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\config" />
+      <recent name="D:\IntelliJ IDEA Workspace\tenthpower_parent\blog-core\src\main\resources\vm\demo" />
+      <recent name="D:\IntelliJ IDEA Workspace\tenthpower_parent\blog-core\src\main\resources\config" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.blog.vo" />
+      <recent name="com.blog.dto.core.common" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\static\js" />
       <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\templates" />
       <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\static\html" />
       <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\static" />
       <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\config" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.blog.dto.core.common" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\config" />
-      <recent name="D:\IntelliJ IDEA Workspace\tenthpower_parent\blog-core\src\main\resources\vm\demo" />
-      <recent name="D:\IntelliJ IDEA Workspace\tenthpower_parent\blog-core\src\main\resources\config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -285,7 +339,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.WebSocketApplication">
+  <component name="RunManager" selected="Application.WebSocketInfoUtil">
+    <configuration name="WebSocketInfoUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.blog.util.WebSocketInfoUtil" />
+      <module name="blog-websocket" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blog.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="blog-core-auth" />
       <extension name="coverage">
@@ -340,11 +407,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.WebSocketInfoUtil" />
         <item itemvalue="Spring Boot.WebSocketApplication" />
         <item itemvalue="Spring Boot.ServiceApplication" />
         <item itemvalue="Spring Boot.CoreApplication" />
         <item itemvalue="Spring Boot.AuthApplication" />
-        <item itemvalue="Spring Boot.CoreApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -365,12 +432,21 @@
       <workItem from="1575366222471" duration="31000" />
       <workItem from="1575366339940" duration="1660000" />
       <workItem from="1575376369081" duration="6808000" />
-      <workItem from="1575424213506" duration="1904000" />
+      <workItem from="1575424213506" duration="2085000" />
+      <workItem from="1575436155161" duration="2880000" />
     </task>
+    <task id="LOCAL-00001" summary="增加">
+      <created>1575429059976</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575429059976</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18452000" />
+    <option name="totallyTimeSpent" value="21513000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -385,7 +461,7 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2118003" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.093797274" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -395,7 +471,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.048387095" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.048387095" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.048387095" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -458,6 +534,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -475,49 +555,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blog-rabbitmq/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-quartz/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-friend/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-friend/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-core-auth/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-core/src/main/resources/banner.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-core/说明.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SECOND">
-          <first_editor relative-caret-position="27">
-            <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ArticleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="52" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/core.java" />
-    <entry file="file://$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/friend/FriendVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/core/common/CreateApiByTableResp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -762,20 +799,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
+        <state relative-caret-position="250">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/websocket_stomp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#h2#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -790,13 +817,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ArticleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="23" column="4" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/websocket_stomp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="60" column="41" lean-forward="true" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#h2#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/ChatInfoUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/FileUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/MessageSendUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blog-websocket/说明.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="516">
-            <caret line="99" column="6" selection-start-line="99" selection-start-column="6" selection-end-line="99" selection-end-column="6" />
+          <first_editor relative-caret-position="50">
+            <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Article.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/ChatInfoVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/GroupChatInfoVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/PrivatelyChatInfoVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="7" column="32" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WebSocketInfoUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="method#addGroupChatInfo#0;class#WebSocketInfoUtil#0" />
+          </folding>
         </state>
       </provider>
     </entry>
