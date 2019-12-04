@@ -6,6 +6,7 @@ import com.blog.util.WebSocketInfoUtil;
 import com.blog.vo.ChatInfoVo;
 import com.blog.vo.ChatMessage;
 import com.blog.vo.CustomMessage;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,10 @@ public class STOMPWebSocket {
 
         // 连接加入到在线map中
         ChatInfoVo chatInfoVo = new ChatInfoVo();
-        chatInfoVo.setSid(UUID.randomUUID().toString().replace("-",""));
+        chatInfoVo.setSid(message.getSid());
+        if (StringUtils.isBlank(message.getSid())) {
+            chatInfoVo.setSid(UUID.randomUUID().toString().replace("-",""));
+        }
         chatInfoVo.setName(message.getName());
         WebSocketInfoUtil.addChatInfo(chatInfoVo);
 
@@ -46,6 +50,7 @@ public class STOMPWebSocket {
         chatMessage.setMessageType(WebSocketConsts.MESSAGE_TYPE_SYSTEM);
         chatMessage.setSendTargetType(WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC);
         chatMessage.setMessage(message.getName() + "连接上了服务器。");
+        chatMessage.setSendUserName(WebSocketConsts.MESSAGE_TYPE_SYSTEM);
         messageSendUtil.sendMessage(chatMessage);
     }
 }

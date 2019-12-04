@@ -7,7 +7,9 @@ import java.io.Serializable;
 @Data
 public class ChatMessage implements Serializable {
 
-    private String sid;
+    private String sendSid;
+
+    private String sendUserName;
 
     private String message;
 

@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,7 +47,7 @@ public class ChatController {
      * 发送消息
      * @return
      */
-    @GetMapping(value="/chat/sendMessage")
+    @PostMapping(value="/chat/sendMessage")
     @ApiOperation(value="发送消息")
     public Result sendChatMessage(CustomMessage customMessage) throws Exception {
         log.info("当前发送消息内容=[{}]", customMessage);
@@ -54,6 +55,10 @@ public class ChatController {
         chatMessage.setMessage(customMessage.getMessage());
         chatMessage.setSendTargetType(WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC);// TODO
         chatMessage.setMessageType(WebSocketConsts.MESSAGE_TYPE_USER);
+        if (WebSocketInfoUtil.chatInfoMap.get(customMessage.getSid()) != null) {
+            chatMessage.setSendUserName(WebSocketInfoUtil.chatInfoMap.get(customMessage.getSid()).getName());
+        }
+        chatMessage.setSendSid(customMessage.getSid());
         messageSendUtil.sendMessage(chatMessage);
         return new Result(true, StatusCode.OK, "消息发送成功！", null);
     }
@@ -72,7 +77,7 @@ public class ChatController {
     /**
      * 聊天记录回显
      */
-    @GetMapping(value="/chat/history")
+    @PostMapping(value="/chat/history")
     @ApiOperation(value="聊天记录回显")
     public Result chatHistory() throws Exception {
         return new Result();

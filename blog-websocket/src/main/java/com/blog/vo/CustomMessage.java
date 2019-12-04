@@ -12,4 +12,5 @@ public class CustomMessage implements Serializable {
     private String name;
 
     private String message;
+
 }
