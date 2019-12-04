@@ -1,0 +1,7 @@
+server:
+    port: 11009
+    
+spring:
+    application:
+        name: blog-websocket
+    #profiles: dev

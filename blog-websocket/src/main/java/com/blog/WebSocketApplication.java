@@ -4,8 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -14,14 +13,12 @@ import java.net.UnknownHostException;
 /**
  * 定时器服务
  */
-@SpringBootApplication
-@EnableDiscoveryClient
-@EnableFeignClients
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class WebSocketApplication {
     private static final Logger log = LoggerFactory.getLogger(WebSocketApplication.class);
 
     public static void main(String[] args) throws UnknownHostException {
-        SpringApplication app = new SpringApplication(QuartzApplication.class);
+        SpringApplication app = new SpringApplication(WebSocketApplication.class);
         Environment env = app.run(args).getEnvironment();
         String protocol = "http";
         if (env.getProperty("server.ssl.key-store") != null) {
