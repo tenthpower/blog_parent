@@ -3,6 +3,7 @@ package com.blog.util;
 import com.blog.vo.ChatInfoVo;
 import com.blog.vo.GroupChatInfoVo;
 import com.blog.vo.PrivatelyChatInfoVo;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,22 +12,23 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 连接信息工具类
  */
+@Component
 public class WebSocketInfoUtil {
 
     /**
      * 当前总现在人数信息
      */
-    private static ConcurrentHashMap<String, ChatInfoVo> chatInfoMap = new ConcurrentHashMap();
+    public static ConcurrentHashMap<String, ChatInfoVo> chatInfoMap = new ConcurrentHashMap();
 
     /**
      * 讨论组信息
      */
-    private static ConcurrentHashMap<String, GroupChatInfoVo> groupChatInfoMap = new ConcurrentHashMap();
+    public static ConcurrentHashMap<String, GroupChatInfoVo> groupChatInfoMap = new ConcurrentHashMap();
 
     /**
      * 私聊信息
      */
-    private static ConcurrentHashMap<String, PrivatelyChatInfoVo> privatelyChatInfoMap = new ConcurrentHashMap();
+    public static ConcurrentHashMap<String, PrivatelyChatInfoVo> privatelyChatInfoMap = new ConcurrentHashMap();
 
     /**
      * 加入当前在线人数

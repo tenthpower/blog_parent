@@ -37,7 +37,7 @@
             setConnected(true);
             console.log('开始进行连接Connected: ' + frame);
             stompClient.subscribe('/topic/notice', function(respnose){ //4
-                showResponse(JSON.parse(respnose.body).responseMessage);
+                showResponse(respnose.body);
             });
         });
     }
