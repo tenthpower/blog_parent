@@ -11,7 +11,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * 定时器服务
+ * WebSocket服务
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class WebSocketApplication {
