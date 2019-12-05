@@ -79,7 +79,7 @@ public class ChatController {
 
 
     @GetMapping(value="/chat/getInfoBySid/{sid}")
-    @ApiOperation(value="通过sid 获取是否登陆")
+    @ApiOperation(value="通过sid 获取信息")
     public Result getInfoBySid(@ApiParam(value="sid", required = true) @PathVariable String sid) throws Exception {
         ChatInfoVo chatInfoMap = WebSocketInfoUtil.chatInfoMap.get(sid);
         GetInfoBySidResp getInfoBySidResp = new GetInfoBySidResp();
@@ -102,7 +102,7 @@ public class ChatController {
         Optional<ChatInfoVo> optional =
                 chatInfoMap.values().stream().filter(x -> x.getTelNo().equals(telNo)).findFirst();
         GetInfoByTelNoResp  getInfoByTelNoResp = new GetInfoByTelNoResp();
-        if (optional != null && optional.get() != null) {
+        if (optional != null && optional.isPresent()) {
             getInfoByTelNoResp.setIsLogin(true);
             getInfoByTelNoResp.setName(optional.get().getName());
             getInfoByTelNoResp.setSid(optional.get().getSid());
