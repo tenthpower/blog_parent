@@ -1,24 +1,25 @@
 package com.blog.controller;
 
 import com.blog.consts.WebSocketConsts;
+import com.blog.dto.GetInfoBySidResp;
+import com.blog.dto.GetInfoByTelNoResp;
+import com.blog.dto.SendChatMessageReqt;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
+import com.blog.util.ChatInfoUtil;
 import com.blog.util.MessageSendUtil;
 import com.blog.util.WebSocketInfoUtil;
 import com.blog.vo.ChatInfoVo;
 import com.blog.vo.ChatMessage;
-import com.blog.vo.CustomMessage;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
@@ -49,16 +50,17 @@ public class ChatController {
      */
     @PostMapping(value="/chat/sendMessage")
     @ApiOperation(value="发送消息")
-    public Result sendChatMessage(CustomMessage customMessage) throws Exception {
-        log.info("当前发送消息内容=[{}]", customMessage);
+    public Result sendChatMessage(SendChatMessageReqt sendChatMessageReqt) throws Exception {
+        log.info("当前发送消息内容=[{}]", sendChatMessageReqt);
         ChatMessage chatMessage = new ChatMessage();
-        chatMessage.setMessage(customMessage.getMessage());
-        chatMessage.setSendTargetType(WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC);// TODO
+        chatMessage.setMessage(sendChatMessageReqt.getMessage());
+        chatMessage.setMessageType(sendChatMessageReqt.getMessageType());
         chatMessage.setMessageType(WebSocketConsts.MESSAGE_TYPE_USER);
-        if (WebSocketInfoUtil.chatInfoMap.get(customMessage.getSid()) != null) {
-            chatMessage.setSendUserName(WebSocketInfoUtil.chatInfoMap.get(customMessage.getSid()).getName());
+        if (WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSid()) != null) {
+            chatMessage.setSendUserName(WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSid()).getName());
         }
-        chatMessage.setSendSid(customMessage.getSid());
+        chatMessage.setSendSid(sendChatMessageReqt.getSid());
+        chatMessage.setToId(sendChatMessageReqt.getToId());
         messageSendUtil.sendMessage(chatMessage);
         return new Result(true, StatusCode.OK, "消息发送成功！", null);
     }
@@ -66,6 +68,7 @@ public class ChatController {
     /**
      * 在线人数列表
      * @return
+     * @throws Exception
      */
     @GetMapping(value="/chat/onlineList")
     @ApiOperation(value="在线人数列表")
@@ -74,8 +77,45 @@ public class ChatController {
         return new Result(true, StatusCode.OK, "查询成功", chatInfoMap);
     }
 
+
+    @GetMapping(value="/chat/getInfoBySid/{sid}")
+    @ApiOperation(value="通过sid 获取是否登陆")
+    public Result getInfoBySid(@ApiParam(value="sid", required = true) @PathVariable String sid) throws Exception {
+        ChatInfoVo chatInfoMap = WebSocketInfoUtil.chatInfoMap.get(sid);
+        GetInfoBySidResp getInfoBySidResp = new GetInfoBySidResp();
+        if (chatInfoMap != null) {
+            getInfoBySidResp.setName(chatInfoMap.getName());
+            getInfoBySidResp.setSid(chatInfoMap.getSid());
+            getInfoBySidResp.setTelNo(chatInfoMap.getTelNo());
+        }
+        return new Result(true, StatusCode.OK, "查询成功", getInfoBySidResp);
+    }
+
     /**
-     * 聊天记录回显
+     * 通过手机号 获取信息，看有没有登陆信息
+     * @return
+     */
+    @GetMapping(value="/chat/getInfoByTelNo/{telNo}")
+    @ApiOperation(value="通过手机号 获取信息，看有没有登陆信息")
+    public Result getInfoByTelNo(@ApiParam(value="手机号", required = true) @PathVariable String telNo) throws Exception {
+        ConcurrentHashMap<String, ChatInfoVo> chatInfoMap = WebSocketInfoUtil.chatInfoMap;
+        Optional<ChatInfoVo> optional =
+                chatInfoMap.values().stream().filter(x -> x.getTelNo().equals(telNo)).findFirst();
+        GetInfoByTelNoResp  getInfoByTelNoResp = new GetInfoByTelNoResp();
+        if (optional != null && optional.get() != null) {
+            getInfoByTelNoResp.setIsLogin(true);
+            getInfoByTelNoResp.setName(optional.get().getName());
+            getInfoByTelNoResp.setSid(optional.get().getSid());
+            getInfoByTelNoResp.setTelNo(optional.get().getTelNo());
+        } else {
+            getInfoByTelNoResp.setIsLogin(false);
+            getInfoByTelNoResp.setSid(ChatInfoUtil.shaEncode(telNo));
+        }
+        return new Result(true, StatusCode.OK, "查询成功", getInfoByTelNoResp);
+    }
+
+    /**
+     * TODO 聊天记录回显
      */
     @PostMapping(value="/chat/history")
     @ApiOperation(value="聊天记录回显")

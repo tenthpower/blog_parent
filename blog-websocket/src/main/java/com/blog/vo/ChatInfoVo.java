@@ -11,6 +11,8 @@ public class ChatInfoVo implements Serializable {
 
     private String sid;
 
+    private String telNo;
+
     private String name;
 
     private String temp;

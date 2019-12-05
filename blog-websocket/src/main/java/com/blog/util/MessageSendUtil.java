@@ -17,6 +17,8 @@ public class MessageSendUtil {
     private SimpMessageSendingOperations messagingTemplate;
 
     public void sendMessage(ChatMessage chatMessage){
+        chatMessage.setSendTargetType(WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC);// TODO
+
         if (chatMessage == null || StringUtils.isBlank(chatMessage.getMessageType())) {
             return;
         }

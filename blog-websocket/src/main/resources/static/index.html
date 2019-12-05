@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Spring Boot+WebSocket+广播式</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/websocket.js"></script>
+</head>
+<body onload="disconnect()">
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="denglu_a" class="navbar-brand" href="javascript:connect();">游客登陆</a>
+            <span class="navbar-brand" id = "wecomeInfo"></span>
+        </div>
+    </div>
+</nav>
+
+<table id="chatTable" class="table table-striped">
+    <tbody>
+    </tbody>
+</table>
+<div style="position:fixed;bottom:0">
+    <div class="col-lg-12">
+        <div class="input-group">
+            <input id="messageInput" type="text" class="form-control">
+            <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="sendMessage()">发送</button>
+                    </span>
+        </div><!-- /input-group -->
+    </div><!-- /.col-lg-6 -->
+</div>
+
+<div class="modal fade" id="createFileMModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createFileTitle">游客名称</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" autofocus class="form-control" id="fileName">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="loginSend()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
