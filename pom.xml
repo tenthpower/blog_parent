@@ -19,10 +19,10 @@
         <module>blog-friend</module>
         <module>blog-security</module>
         <module>blog-core</module>
-        <module>blog-core-registry</module>
+        <!--<module>blog-core-registry</module>
         <module>blog-core-gateway</module>
         <module>blog-core-config</module>
-        <module>blog-core-auth</module>
+        <module>blog-core-auth</module>-->
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

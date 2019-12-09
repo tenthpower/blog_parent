@@ -95,6 +95,10 @@ function connect() {
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
         consoleConnected(true);
+        console.log('订阅[/topic/online]');
+        stompClient.subscribe('/topic/online', function(respnose){
+            onlineUpdate(JSON.parse(respnose.body));
+        });
         console.log('订阅[/topic/notice]');
         stompClient.subscribe('/topic/notice', function(respnose){
             showResponse(JSON.parse(respnose.body));
@@ -109,6 +113,7 @@ function loginChat() {
 function setView(isConnect) {
     if (isConnect) {
         document.getElementById('loginBut').style.visibility = 'hidden';// 进入的按钮隐藏
+
         document.getElementById('ChatTab').style.display = 'block';// 聊天tab页
         document.getElementById('publicChatTable').style.display = 'block';// 公聊屏
         document.getElementById('sendMessageDiv').style.display = 'block';// 发消息块
@@ -142,7 +147,7 @@ function login(autoLogin){
             JSON.stringify({'sid':sid,"telNo": telNo, 'name': name })
         );
     } catch(err) {
-        console.log("订阅异常："+err);
+        console.log("订阅异常change-notice："+err);
     }
 
     setCookie("sid",sid);
@@ -159,6 +164,16 @@ function showResponse(data){
     } else {
         $("#publicChatTable tbody").append('<tr><td class="col-md-1">'+data.sendUserName+'</td><td class="col-md-8">'+data.message+'</td><td class="col-md-1"></td></tr>');
     }
+}
+function onlineUpdate(data) {// {"chatCount":0,"groupCount":0,"chatInfoList":[{"sid":"","name":"","telNo":""}]}
+    $("#publicChat").text('公聊(当前人数:'+data.chatCount +')');
+    /* $("#groupChat").text('得已');*/
+    $("#privatelyChat").text('私聊');
+    $("#privatelyChatList li").remove();
+    data.chatInfoList.forEach(function iForEach(item, index) {
+        console.log("私聊信息：" + item);
+        $("#privatelyChatList").append("<li><a href=\"#\">"+item.name+"</a></li>");
+    })
 }
 
 

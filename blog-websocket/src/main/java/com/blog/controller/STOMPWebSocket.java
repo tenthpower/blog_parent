@@ -33,7 +33,7 @@ public class STOMPWebSocket {
      * @Date: 2019年12月5日
      */
     @MessageMapping("/change-notice")//客户端访问服务端的时候config中配置的服务端接收前缀也要加上 例：/app/change-notice
-    @SendTo("/topic/notice")//config中配置的订阅前缀记得要加上
+    @SendTo("/topic/online")//config中配置的订阅前缀记得要加上
     public void greeting(CustomMessage message) throws Exception {
         //                         StompHeaderAccessor stompHeaderAccessor,
         //                         Principal principal
@@ -53,6 +53,9 @@ public class STOMPWebSocket {
         chatMessage.setSendTargetType(WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC);
         chatMessage.setMessage(MessageFormat.format("[{0}]连接到服务器。", message.getName()));
         chatMessage.setSendUserName(WebSocketConsts.MESSAGE_TYPE_SYSTEM);
+        //发送系统消息
         messageSendUtil.sendMessage(chatMessage);
+        // 发送在线信息
+        messageSendUtil.sendOnlineInfo();
     }
 }
