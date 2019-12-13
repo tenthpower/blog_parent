@@ -16,7 +16,6 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
 import java.text.MessageFormat;
-import java.util.UUID;
 
 @Controller
 public class STOMPWebSocket {
@@ -51,7 +50,7 @@ public class STOMPWebSocket {
         ChatMessage chatMessage = new ChatMessage();
         chatMessage.setMessageType(WebSocketConsts.MESSAGE_TYPE_SYSTEM);
         chatMessage.setSendTargetType(WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC);
-        chatMessage.setMessage(MessageFormat.format("[{0}]连接到服务器。", message.getName()));
+        chatMessage.setSendMessage(MessageFormat.format("[{0}]连接到服务器。", message.getName()));
         chatMessage.setSendUserName(WebSocketConsts.MESSAGE_TYPE_SYSTEM);
         //发送系统消息
         messageSendUtil.sendMessage(chatMessage);

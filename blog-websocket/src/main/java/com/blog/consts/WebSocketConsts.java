@@ -16,4 +16,6 @@ public class WebSocketConsts {
 
     public static String MESSAGE_TYPE_USER = "用户";
 
+    public static String SYSTEM_FILE_NAME = "系统日志";
+
 }

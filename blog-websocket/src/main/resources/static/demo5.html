@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页即时聊天(Spring Boot+WebSocket+广播式)</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.4.1/semantic.min.css">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.js"></script>
+    <script src="https://cdn.bootcss.com/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/websocket5.js"></script>
+    <style>
+        body {
+            background-image: url({% static 'images/webchat.jpg' %});
+            background-attachment: fixed;
+            background-position: center;
+            background-size: 100% 100%;
+        }
+        .body {
+            margin-top: 10px;
+            width:100%;
+            background-color: #f5f5f5;
+        }
+        .ui.button.teacher {
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+    </script>
+</head>
+<body onload="resetConnect()">
+<div id="myContent" class="ui grid" style="display: none">
+    <div  class="ui container body" style="padding: 2px">
+        <div id="menuDiv" class="ui inverted menu">
+            <a id="publicChat" class="active item">
+                公聊(在线/总数)
+            </a>
+            <a id="groupChat" class="item">
+                群聊
+            </a>
+            <a id="privatelyChat" class="item">
+                好友(在线/总数)
+            </a>
+            <div style="display: block;float: right">
+                <span id="wecomeInfo"></span>
+            </div>
+        </div>
+        <div class="ui two column grid" style="margin-left: 20px">
+            <div class="four wide column">
+                <div class="ui blue top attached button">
+                    公聊在线列表
+                </div>
+                <div id="chatListDiv" class="ui attached segment" style="overflow-y:scroll;height: 540px">
+                </div>
+            </div>
+            <div class="ten wide column">
+                <div class="ui segments">
+                    <div class="ui center aligned blue inverted secondary segment">
+                        正在<span id="currentName"></span>
+                    </div>
+                    <div class="ui segment" style="height: 525px">
+                        <div id="chatFeedDiv" class="ui feed" style="overflow-y:scroll;height: 350px">
+
+                            <!--<div class="event">
+                                <div class="label" >
+                                    <i class="blue user icon"></i>
+                                </div>
+                                <div class="content">
+                                    <div class="summary">
+                                        <a>我</a>
+                                        <div class="date">
+                                            2019/1/20 14:20:56
+                                        </div>
+                                    </div>
+                                    <div class="extra text">
+                                        有需要帮助
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                        <form class="ui reply form">
+                            <div class="field">
+                                <textarea rows="4" id="messageInput"></textarea>
+                            </div>
+                            <div class="ui right floated mini green button" onclick="sendMessage()">
+                                发送
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="loginModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createFileTitle">游客名称</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <span>手机号:</span><input type="text" autofocus class="form-control" id="telNo"
+                                                onblur="telNoOnBlur()">
+                    </div>
+                    <div class="form-group">
+                        <span>用户名:</span><input type="text" autofocus class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <span>是否隐藏手机号信息:</span><input type="checkbox" autofocus id="isHiddenTelNo">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="login(false)">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

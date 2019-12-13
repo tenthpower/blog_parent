@@ -29,7 +29,7 @@
         <a id="privatelyChat" class="dropdown-toggle" href="javascript:groupChat();" data-toggle="dropdown">
             私聊(当前好友名)<span class="caret"></span>
         </a>
-        <ul id="privatelyChatList" class="dropdown-menu">
+        <ul id="privatelyChatList" style="height:60%;overflow-y:scroll;" class="dropdown-menu">
             <li><a href="#">Swing</a></li>
             <li><a href="#">jMeter</a></li>
             <li><a href="#">EJB</a></li>
@@ -42,10 +42,10 @@
 <div id="myTabContent" class="tab-content">
     <table id="publicChatTable" class="table table-striped" style="display: none">
         <tbody>
-            <tr><td class=""></td>
-                <td class=""></td>
-                <td class=""></td>
-            </tr>
+        <tr><td class=""></td>
+            <td class=""></td>
+            <td class=""></td>
+        </tr>
         </tbody>
     </table>
 </div>
@@ -56,7 +56,7 @@
         <div class="input-group">
             <input id="messageInput" type="text" class="form-control">
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button" onclick="sendMessage()">发送</button>
+                <button class="btn btn-default" type="button" autofocus onclick="sendMessage()">发送</button>
             </span>
         </div>
     </div>
@@ -81,7 +81,7 @@
                         <span>用户名:</span><input type="text" autofocus class="form-control" id="name">
                     </div>
                     <div class="form-group">
-                        <span>是否隐藏手机号信息:</span><input type="checkbox" autofocus class="form-control" id="isHiddenTelNo">
+                        <span>是否隐藏手机号信息:</span><input type="checkbox" autofocus id="isHiddenTelNo">
                     </div>
                 </form>
             </div>

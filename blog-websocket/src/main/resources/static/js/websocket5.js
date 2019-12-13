@@ -42,7 +42,6 @@ function resetConnect() {
     if (stompClient != null) {
         stompClient.disconnect();
     }
-    consoleConnected(false);
 
     /*重新连接*/
     connect();
@@ -50,6 +49,7 @@ function resetConnect() {
     /* 加载cookie 数据中的sid,telNo，name */
     sid = getCookie("sid");
     if (sid == null || sid == "") {
+        $('#loginModal').modal('show');
         return;
     }
     $.ajax({
@@ -71,30 +71,26 @@ function resetConnect() {
                     $("#telNo").val(telNo);
                     /*进行登陆*/
                     login(true);
+                } else {
+                    $('#loginModal').modal('show');
                 }
             } else {
                 console.log("获取sid对应的人信息无果。。。");
+                $('#loginModal').modal('show');
             }
         },
         error: function (e) {
             console.log("获取sid对应的人信息异常。。。");
+            $('#loginModal').modal('show');
         }
     });
 }
 
-function consoleConnected(connected) {
-    if (connected) {
-        console.log("连接成功。。。");
-    } else {
-        console.log("连接关闭。。。");
-    }
-}
 
 function connect() {
     var socket = new SockJS('/socket');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function(frame) {
-        consoleConnected(true);
         console.log('订阅[/topic/online]');
         stompClient.subscribe('/topic/online', function(respnose){
             onlineUpdate(JSON.parse(respnose.body));
@@ -106,23 +102,12 @@ function connect() {
     });
 }
 
-function loginChat() {
-    $('#createFileMModal').modal('show');
-}
-
 function setView(isConnect) {
     if (isConnect) {
-        document.getElementById('loginBut').style.visibility = 'hidden';
-
-        document.getElementById('ChatTab').style.display = 'block';
-        document.getElementById('publicChatTable').style.display = 'block';
-        document.getElementById('sendMessageDiv').style.display = 'block';
+        document.getElementById('myContent').style.display = 'block';
         document.getElementById('wecomeInfo').innerText = "欢迎您：" + name;
     } else {
-        document.getElementById('loginBut').style.visibility = 'disable';
-        document.getElementById('ChatTab').style.display = 'none';
-        document.getElementById('publicChatTable').style.display = 'none';
-        document.getElementById('sendMessageDiv').style.display = 'none';
+        document.getElementById('myContent').style.display = 'none';
         document.getElementById('wecomeInfo').innerText = "";
     }
 }
@@ -154,41 +139,55 @@ function login(autoLogin){
     setCookie("telNo",telNo);
     setCookie("name",name);
     setView(true);
-    $('#createFileMModal').modal('hide');
+    $('#loginModal').modal('hide');
 
 };
 
 function showResponse(data){
+    var name ="";
     if (data.sendSid == sid) {
-        $("#publicChatTable tbody").append('<tr><td class="col-md-1"></td><td class="col-md-8">' + data.message + '</td><td class="col-md-1">' + name + '</td></tr>');
+        name = "我";
     } else {
-        $("#publicChatTable tbody").append('<tr><td class="col-md-1">'+data.sendUserName+'</td><td class="col-md-8">'+data.message+'</td><td class="col-md-1"></td></tr>');
+        name= data.sendUserName;
     }
+    var divText = "<div class=\"event\">" +
+        "              <div class=\"label\">" +
+        "                  <i class=\"green user icon\"></i>" +
+        "              </div>" +
+        "              <div class=\"content\">" +
+        "                  <div class=\"summary\">" +
+        "                       <a>" + name + "</a>" +
+        "                       <div class=\"date\">" + "2019-1-20 14:20:56" +
+        "                       </div>" +
+        "                  </div>" +
+        "                  <div class=\"extra text\">" + data.sendMessage +
+        "                  </div>" +
+        "               </div>" +
+        "           </div>";
+    $("#chatFeedDiv").append(divText);
 }
 function onlineUpdate(data) {/* {"chatCount":0,"groupCount":0,"chatInfoList":[{"sid":"","name":"","telNo":""}]}*/
-    $("#publicChat").text('公聊(当前人数:'+data.chatCount +')');
-    /* $("#groupChat").text('得已');*/
-    $("#privatelyChat").text('私聊');
-    $("#privatelyChatList li").remove();
+    $("#publicChat").text('公聊('+data.chatCount +'/-)');
+    $("#groupChat").text('群聊');
+    $("#privatelyChat").text('好友(0/0)');
+    $("#chatListDiv").empty();
     data.chatInfoList.forEach(function iForEach(item, index) {
-        console.log("私聊信息：" + item);
-        $("#privatelyChatList").append("<li><a href=\"#\">"+item.name+"("+item.telNo+")"+ +"</a><span class='caret'></span></li>");
+        $("#chatListDiv").append("<button id='btn"+item.sid+"' class=\"ui fluid button teacher\">"+item.name+"</button>");
     })
 }
 
 
 function sendMessage(){
     if (sid == null || sid == '') {
-        alert("请先进入。");
+        $('#loginModal').modal('show');
         return;
     }
     var messageInput = $("#messageInput").val();
     if (messageInput == "") {
         alert("发送消息不能为空哦");
     }
-    /* TODO 发送的内容toId */
     var sendTargetType = "public";// 群聊组id，私聊好友id
-
+    var toId = "public";
     $.ajax({
         url: "/api/chat/sendMessage",
         type: "post",

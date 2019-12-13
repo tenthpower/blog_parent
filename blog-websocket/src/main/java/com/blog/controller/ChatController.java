@@ -7,6 +7,7 @@ import com.blog.dto.SendChatMessageReqt;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.util.ChatInfoUtil;
+import com.blog.util.FileUtil;
 import com.blog.util.MessageSendUtil;
 import com.blog.util.WebSocketInfoUtil;
 import com.blog.vo.ChatInfoVo;
@@ -32,6 +33,9 @@ public class ChatController {
     @Autowired
     private MessageSendUtil messageSendUtil;
 
+    @Autowired
+    private FileUtil fileUtil;
+
     /**
      * 在线总人数
      * @return
@@ -52,14 +56,18 @@ public class ChatController {
     @ApiOperation(value="发送消息")
     public Result sendChatMessage(SendChatMessageReqt sendChatMessageReqt) throws Exception {
         log.info("当前发送消息内容=[{}]", sendChatMessageReqt);
+
+        // 记录消息内容
+        fileUtil.saveChatMessage(sendChatMessageReqt);
+
         ChatMessage chatMessage = new ChatMessage();
-        chatMessage.setMessage(sendChatMessageReqt.getMessage());
-        chatMessage.setMessageType(sendChatMessageReqt.getMessageType());
-        chatMessage.setMessageType(WebSocketConsts.MESSAGE_TYPE_USER);
-        if (WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSid()) != null) {
-            chatMessage.setSendUserName(WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSid()).getName());
+        chatMessage.setSendMessage(sendChatMessageReqt.getSendMessage());
+        chatMessage.setSendSid(sendChatMessageReqt.getSendSid());
+        if (WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSendSid()) != null) {
+            chatMessage.setSendUserName(WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSendSid()).getName());
         }
-        chatMessage.setSendSid(sendChatMessageReqt.getSid());
+        chatMessage.setMessageType(sendChatMessageReqt.getMessageType());
+        chatMessage.setSendTargetType(sendChatMessageReqt.getSendTargetType());
         chatMessage.setToId(sendChatMessageReqt.getToId());
         messageSendUtil.sendMessage(chatMessage);
         return new Result(true, StatusCode.OK, "消息发送成功！", null);

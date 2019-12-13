@@ -1,11 +1,13 @@
 package com.blog.util;
 
 import com.blog.consts.WebSocketConsts;
+import com.blog.dto.SendChatMessageReqt;
 import com.blog.vo.ChatMessage;
 import com.blog.vo.OnLineInfoVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
@@ -22,9 +24,6 @@ public class MessageSendUtil {
     public void sendMessage(ChatMessage chatMessage){
         chatMessage.setSendTargetType(WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC);// TODO
 
-        if (chatMessage == null || StringUtils.isBlank(chatMessage.getMessageType())) {
-            return;
-        }
         if (StringUtils.equals(chatMessage.getSendTargetType(), WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC)) {
             messagingTemplate.convertAndSend("/topic/notice", chatMessage);
         } else if (StringUtils.equals(chatMessage.getSendTargetType(), WebSocketConsts.SEND_MESSAGE_TYPE_GROUP)) {
@@ -41,5 +40,7 @@ public class MessageSendUtil {
         onLineInfoVo.setChatInfoList(WebSocketInfoUtil.chatInfoMap.values().stream().collect(Collectors.toList()));
         messagingTemplate.convertAndSend("/topic/online", onLineInfoVo);
     }
+
+
 
 }

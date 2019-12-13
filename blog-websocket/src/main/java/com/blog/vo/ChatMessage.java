@@ -11,7 +11,7 @@ public class ChatMessage implements Serializable {
 
     private String sendUserName;
 
-    private String message;
+    private String sendMessage;
 
     private String messageType;
 
