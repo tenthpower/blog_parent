@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.core.env.Environment;
 
 import java.net.InetAddress;
@@ -14,7 +16,7 @@ import java.net.UnknownHostException;
  * WebSocket服务
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-public class WebSocketApplication {
+public class WebSocketApplication extends SpringBootServletInitializer {
     private static final Logger log = LoggerFactory.getLogger(WebSocketApplication.class);
 
     public static void main(String[] args) throws UnknownHostException {
@@ -39,4 +41,8 @@ public class WebSocketApplication {
                 configServerStatus == null ? "Not found or not setup for this application" : configServerStatus);
     }
 
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(WebSocketApplication.class);
+    }
 }

@@ -17,6 +17,8 @@ public class ChatMessage implements Serializable {
 
     private String sendTargetType;
 
+    private String sendDate;
+
     /**
      * 到达Id：目标sid或者组Id
      */

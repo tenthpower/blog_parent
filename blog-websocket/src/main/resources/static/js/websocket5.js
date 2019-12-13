@@ -157,7 +157,7 @@ function showResponse(data){
         "              <div class=\"content\">" +
         "                  <div class=\"summary\">" +
         "                       <a>" + name + "</a>" +
-        "                       <div class=\"date\">" + "2019-1-20 14:20:56" +
+        "                       <div class=\"date\">" + data.sendDate +
         "                       </div>" +
         "                  </div>" +
         "                  <div class=\"extra text\">" + data.sendMessage +

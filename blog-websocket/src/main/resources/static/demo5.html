@@ -44,6 +44,7 @@
             <a id="privatelyChat" class="item">
                 好友(在线/总数)
             </a>
+            <a class="item" onclick="yijianFankui()">意见反馈</a>
             <div style="display: block;float: right">
                 <span id="wecomeInfo"></span>
             </div>
@@ -62,32 +63,13 @@
                         正在<span id="currentName"></span>
                     </div>
                     <div class="ui segment" style="height: 525px">
-                        <div id="chatFeedDiv" class="ui feed" style="overflow-y:scroll;height: 350px">
-
-                            <!--<div class="event">
-                                <div class="label" >
-                                    <i class="blue user icon"></i>
-                                </div>
-                                <div class="content">
-                                    <div class="summary">
-                                        <a>我</a>
-                                        <div class="date">
-                                            2019/1/20 14:20:56
-                                        </div>
-                                    </div>
-                                    <div class="extra text">
-                                        有需要帮助
-                                    </div>
-                                </div>
-                            </div>-->
+                        <div id="chatFeedDiv" class="ui feed" style="overflow-y:scroll;height:400px">
                         </div>
                         <form class="ui reply form">
-                            <div class="field">
-                                <textarea rows="4" id="messageInput"></textarea>
+                            <div class="field" style="float: left;width:90%;height:40px">
+                                <textarea rows="3" style="resize:none" id="messageInput"></textarea>
                             </div>
-                            <div class="ui right floated mini green button" onclick="sendMessage()">
-                                发送
-                            </div>
+                            <div style="width:60px;height:30px" class="ui right floated mini green button" onclick="sendMessage()">发送</div>
                         </form>
                     </div>
                 </div>

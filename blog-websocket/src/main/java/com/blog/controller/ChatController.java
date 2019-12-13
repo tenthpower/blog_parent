@@ -6,10 +6,7 @@ import com.blog.dto.GetInfoByTelNoResp;
 import com.blog.dto.SendChatMessageReqt;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
-import com.blog.util.ChatInfoUtil;
-import com.blog.util.FileUtil;
-import com.blog.util.MessageSendUtil;
-import com.blog.util.WebSocketInfoUtil;
+import com.blog.util.*;
 import com.blog.vo.ChatInfoVo;
 import com.blog.vo.ChatMessage;
 import io.swagger.annotations.Api;
@@ -69,6 +66,7 @@ public class ChatController {
         chatMessage.setMessageType(sendChatMessageReqt.getMessageType());
         chatMessage.setSendTargetType(sendChatMessageReqt.getSendTargetType());
         chatMessage.setToId(sendChatMessageReqt.getToId());
+        chatMessage.setSendDate(DateUtil.toString(DateUtil.getCurDate(),DateUtil.DATE_PATTERN_YYYYMMDDHHmmSS));
         messageSendUtil.sendMessage(chatMessage);
         return new Result(true, StatusCode.OK, "消息发送成功！", null);
     }
