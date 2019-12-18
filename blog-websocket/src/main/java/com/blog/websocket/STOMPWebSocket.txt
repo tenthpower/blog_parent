@@ -1,10 +1,9 @@
-package com.blog.controller;
+package com.blog.websocket;
 
 import com.blog.consts.WebSocketConsts;
-import com.blog.util.ChatInfoUtil;
-import com.blog.util.MessageSendUtil;
-import com.blog.util.WebSocketInfoUtil;
-import com.blog.vo.ChatInfoVo;
+import com.blog.util.ShaEncodeUtil;
+import com.blog.util.WSMessageUtil;
+import com.blog.vo.UserInfo;
 import com.blog.vo.ChatMessage;
 import com.blog.vo.CustomMessage;
 import org.apache.commons.lang3.StringUtils;
@@ -23,7 +22,7 @@ public class STOMPWebSocket {
     private final Logger log = LoggerFactory.getLogger(STOMPWebSocket.class);
 
     @Autowired
-    private MessageSendUtil messageSendUtil;
+    private WSMessageUtil WSMessageUtil;
 
 
     /**
@@ -38,23 +37,23 @@ public class STOMPWebSocket {
         //                         Principal principal
         log.debug("服务端接收到连接信息：", message);
         // 连接加入到在线map中
-        ChatInfoVo chatInfoVo = new ChatInfoVo();
-        chatInfoVo.setTelNo(message.getTelNo());
-        if (StringUtils.equals(message.getSid(), ChatInfoUtil.shaEncode(message.getTelNo()))) {
-            chatInfoVo.setSid(message.getSid());
+        UserInfo userInfo = new UserInfo();
+        userInfo.setTelNo(message.getTelNo());
+        if (StringUtils.equals(message.getSid(), ShaEncodeUtil.shaEncode(message.getTelNo()))) {
+            userInfo.setSid(message.getSid());
         } else {
             // TODO 校验sid 和 telNo 的hash值不一致
         }
-        chatInfoVo.setName(message.getName());
-        WebSocketInfoUtil.addChatInfo(chatInfoVo);
+        userInfo.setName(message.getName());
+        SocketSessionRegistry.addChatInfo(userInfo);
         ChatMessage chatMessage = new ChatMessage();
         chatMessage.setMessageType(WebSocketConsts.MESSAGE_TYPE_SYSTEM);
         chatMessage.setSendTargetType(WebSocketConsts.SEND_MESSAGE_TYPE_PUBLIC);
         chatMessage.setSendMessage(MessageFormat.format("[{0}]连接到服务器。", message.getName()));
         chatMessage.setSendUserName(WebSocketConsts.MESSAGE_TYPE_SYSTEM);
         //发送系统消息
-        messageSendUtil.sendMessage(chatMessage);
+        WSMessageUtil.sendMessage(chatMessage);
         // 发送在线信息
-        messageSendUtil.sendOnlineInfo();
+        WSMessageUtil.sendOnlineInfo();
     }
 }

@@ -7,8 +7,10 @@ import com.blog.dto.SendChatMessageReqt;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.util.*;
-import com.blog.vo.ChatInfoVo;
-import com.blog.vo.ChatMessage;
+import com.blog.util.vo.MessageToFileVo;
+import com.blog.util.vo.WSMessageVo;
+import com.blog.websocket.SocketSessionRegistry;
+import com.blog.websocket.vo.UserInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -17,8 +19,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 @RequestMapping("/api")
@@ -28,7 +31,7 @@ public class ChatController {
     private final Logger log = LoggerFactory.getLogger(ChatController.class);
 
     @Autowired
-    private MessageSendUtil messageSendUtil;
+    private WSMessageUtil WSMessageUtil;
 
     @Autowired
     private FileUtil fileUtil;
@@ -40,7 +43,8 @@ public class ChatController {
     @GetMapping(value="/chat/onlineCount")
     @ApiOperation(value="在线总人数")
     public Result onlineCount() throws Exception {
-        Integer count = WebSocketInfoUtil.chatInfoMap.size();
+        long count = SocketSessionRegistry.registryUserInfoMap.values()
+                .stream().filter(userInfo -> userInfo.getIsOnline() == WebSocketConsts.STATUS_ONLINE).count();
         log.info("当前在线总人数：{}", count);
         return new Result(true, StatusCode.OK, "查询成功", count);
     }
@@ -51,23 +55,32 @@ public class ChatController {
      */
     @PostMapping(value="/chat/sendMessage")
     @ApiOperation(value="发送消息")
-    public Result sendChatMessage(SendChatMessageReqt sendChatMessageReqt) throws Exception {
-        log.info("当前发送消息内容=[{}]", sendChatMessageReqt);
+    public Result sendChatMessage(SendChatMessageReqt params) throws Exception {
+        log.info("当前发送消息内容=[{}]", params);
+
+        String sendDate = DateUtil.toString(DateUtil.getCurDate(),DateUtil.DATE_PATTERN_YYYYMMDDHHmmSS);
+        String sendName = "";
+        if (SocketSessionRegistry.registryUserInfoMap.get(params.getSendSid()) != null) {
+            sendName = SocketSessionRegistry.registryUserInfoMap.get(params.getSendSid()).getName();
+        }
 
         // 记录消息内容
-        fileUtil.saveChatMessage(sendChatMessageReqt);
+        String fileName = params.getToId();
+        MessageToFileVo messageToFileVo = new MessageToFileVo();
+        messageToFileVo.setSendDate(sendDate);
+        messageToFileVo.setSendMessage(params.getSendMessage());
+        messageToFileVo.setSendName(sendName);
+        messageToFileVo.setSendSid(params.getSendSid());
+        fileUtil.saveChatMessage(fileName, messageToFileVo);
 
-        ChatMessage chatMessage = new ChatMessage();
-        chatMessage.setSendMessage(sendChatMessageReqt.getSendMessage());
-        chatMessage.setSendSid(sendChatMessageReqt.getSendSid());
-        if (WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSendSid()) != null) {
-            chatMessage.setSendUserName(WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSendSid()).getName());
-        }
-        chatMessage.setMessageType(sendChatMessageReqt.getMessageType());
-        chatMessage.setSendTargetType(sendChatMessageReqt.getSendTargetType());
-        chatMessage.setToId(sendChatMessageReqt.getToId());
-        chatMessage.setSendDate(DateUtil.toString(DateUtil.getCurDate(),DateUtil.DATE_PATTERN_YYYYMMDDHHmmSS));
-        messageSendUtil.sendMessage(chatMessage);
+        // 发送消息
+        WSMessageVo wsMessageVo = new WSMessageVo();
+        wsMessageVo.setSendUserName(sendName);
+        wsMessageVo.setSendSid(params.getSendSid());
+        wsMessageVo.setSendMessage(params.getSendMessage());
+        wsMessageVo.setMessageType(WebSocketConsts.TYPE_USER);
+        wsMessageVo.setSendDate(sendDate);
+        WSMessageUtil.sendMessage(wsMessageVo);
         return new Result(true, StatusCode.OK, "消息发送成功！", null);
     }
 
@@ -79,20 +92,25 @@ public class ChatController {
     @GetMapping(value="/chat/onlineList")
     @ApiOperation(value="在线人数列表")
     public Result chatList() throws Exception {
-        ConcurrentHashMap<String, ChatInfoVo> chatInfoMap = WebSocketInfoUtil.chatInfoMap;
-        return new Result(true, StatusCode.OK, "查询成功", chatInfoMap);
+        List<UserInfo> userInfoMap = new ArrayList<>();
+        SocketSessionRegistry.registryUserInfoMap.values()
+                .stream()
+                .filter(userInfo -> userInfo.getIsOnline() == WebSocketConsts.STATUS_ONLINE)
+                .forEach(userInfo -> userInfoMap.add(userInfo));
+        return new Result(true, StatusCode.OK, "查询成功", userInfoMap);
     }
 
 
     @GetMapping(value="/chat/getInfoBySid/{sid}")
     @ApiOperation(value="通过sid 获取信息")
     public Result getInfoBySid(@ApiParam(value="sid", required = true) @PathVariable String sid) throws Exception {
-        ChatInfoVo chatInfoMap = WebSocketInfoUtil.chatInfoMap.get(sid);
+        UserInfo userInfo = SocketSessionRegistry.registryUserInfoMap.get(sid);
         GetInfoBySidResp getInfoBySidResp = new GetInfoBySidResp();
-        if (chatInfoMap != null) {
-            getInfoBySidResp.setName(chatInfoMap.getName());
-            getInfoBySidResp.setSid(chatInfoMap.getSid());
-            getInfoBySidResp.setTelNo(chatInfoMap.getTelNo());
+        if (userInfo != null) {
+            getInfoBySidResp.setName(userInfo.getName());
+            getInfoBySidResp.setSid(userInfo.getSid());
+            getInfoBySidResp.setTelNo(userInfo.getTelNo());
+            getInfoBySidResp.setIsHiddenTelNo(userInfo.getIsHiddenTelNo());
         }
         return new Result(true, StatusCode.OK, "查询成功", getInfoBySidResp);
     }
@@ -104,18 +122,19 @@ public class ChatController {
     @GetMapping(value="/chat/getInfoByTelNo/{telNo}")
     @ApiOperation(value="通过手机号 获取信息，看有没有登陆信息")
     public Result getInfoByTelNo(@ApiParam(value="手机号", required = true) @PathVariable String telNo) throws Exception {
-        ConcurrentHashMap<String, ChatInfoVo> chatInfoMap = WebSocketInfoUtil.chatInfoMap;
-        Optional<ChatInfoVo> optional =
-                chatInfoMap.values().stream().filter(x -> x.getTelNo().equals(telNo)).findFirst();
+        Optional<UserInfo> optional = SocketSessionRegistry.registryUserInfoMap
+                .values().stream().filter(x -> x.getTelNo().equals(telNo)).findFirst();
         GetInfoByTelNoResp  getInfoByTelNoResp = new GetInfoByTelNoResp();
         if (optional != null && optional.isPresent()) {
             getInfoByTelNoResp.setIsLogin(true);
-            getInfoByTelNoResp.setName(optional.get().getName());
-            getInfoByTelNoResp.setSid(optional.get().getSid());
-            getInfoByTelNoResp.setTelNo(optional.get().getTelNo());
+            UserInfo userInfo = optional.get();
+            getInfoByTelNoResp.setName(userInfo.getName());
+            getInfoByTelNoResp.setSid(userInfo.getSid());
+            getInfoByTelNoResp.setTelNo(userInfo.getTelNo());
+            getInfoByTelNoResp.setIsHiddenTelNo(userInfo.getIsHiddenTelNo());
         } else {
             getInfoByTelNoResp.setIsLogin(false);
-            getInfoByTelNoResp.setSid(ChatInfoUtil.shaEncode(telNo));
+            getInfoByTelNoResp.setSid(ShaEncodeUtil.shaEncode(telNo));
         }
         return new Result(true, StatusCode.OK, "查询成功", getInfoByTelNoResp);
     }

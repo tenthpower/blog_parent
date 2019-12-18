@@ -2,9 +2,6 @@ package com.blog.aspect;
 
 import com.blog.consts.WebSocketConsts;
 import com.blog.util.FileUtil;
-import com.blog.vo.FileContentVo;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,17 +13,15 @@ import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
 import java.util.Arrays;
-import java.util.Date;
 
-
+/**
+ * 接口切面
+ */
 @Aspect
 @Component
 public class BaseRestAspect {
 
     private final Logger log = LoggerFactory.getLogger(BaseRestAspect.class);
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @Autowired
     private FileUtil fileUtil;

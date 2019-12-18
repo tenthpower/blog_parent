@@ -5,10 +5,10 @@ import org.springframework.stereotype.Component;
 import java.security.MessageDigest;
 
 /**
- * 聊天信息工具类
+ * 字符串工具类型
  */
 @Component
-public class ChatInfoUtil {
+public class ShaEncodeUtil {
 
     private static String STR_CODE = "yenroc.Ho";
 
@@ -36,4 +36,25 @@ public class ChatInfoUtil {
         return hexValue.toString();
     }
 
+    /**
+     * 通过两个字符串生产一个字符串
+     * @param aStr,bStr
+     * @return
+     * @throws Exception
+     */
+    public static String shaEncode(String aStr, String bStr) throws Exception {
+        return shaEncode(strAppend(aStr, bStr));
+    }
+
+
+    /**
+     * sidA + sidB 返回唯一 字符串
+     */
+    public static String strAppend(String sidA,String sidB) {
+        if (sidA.compareTo(sidB) < 0){
+            return sidA + sidB;
+        } else {
+            return sidB + sidA;
+        }
+    }
 }

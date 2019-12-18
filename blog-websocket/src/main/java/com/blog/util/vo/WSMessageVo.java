@@ -1,11 +1,11 @@
-package com.blog.vo;
+package com.blog.util.vo;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class ChatMessage implements Serializable {
+public class WSMessageVo implements Serializable {
 
     private String sendSid;
 
@@ -15,13 +15,6 @@ public class ChatMessage implements Serializable {
 
     private String messageType;
 
-    private String sendTargetType;
-
     private String sendDate;
-
-    /**
-     * 到达Id：目标sid或者组Id
-     */
-    private String toId;
 
 }

@@ -17,4 +17,6 @@ public class GetInfoByTelNoResp implements Serializable {
 
     private String telNo;
 
+    private Integer isHiddenTelNo;
+
 }

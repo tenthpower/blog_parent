@@ -1,12 +1,11 @@
-package com.blog.vo;
+package com.blog.util.vo;
 
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Data
-public class SaveChatMessageVo implements Serializable {
+public class MessageToFileVo implements Serializable {
 
     private static final long serialVersionUID = -8820867230466089988L;
 
@@ -16,6 +15,6 @@ public class SaveChatMessageVo implements Serializable {
 
     private String sendMessage;
 
-    private Date sendDate;
+    private String sendDate;
 
 }

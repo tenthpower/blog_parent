@@ -1,12 +1,7 @@
 package com.blog.util;
 
 import com.blog.config.ConfigProperties;
-import com.blog.consts.WebSocketConsts;
-import com.blog.dto.SendChatMessageReqt;
-import com.blog.vo.FileContentVo;
-import com.blog.vo.SaveChatMessageVo;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.lang3.StringUtils;
+import com.blog.util.vo.MessageToFileVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +12,6 @@ import java.io.*;
 import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 文件操作工具类
@@ -54,7 +47,6 @@ public class FileUtil {
     }
 
     public void writeObj(File file,String fileName, Object obj) throws IOException {
-//        boolean isexit = false;
         if (file == null) {
             file = createFile(fileName);
         }
@@ -76,9 +68,7 @@ public class FileUtil {
 //        objectOutputStream.writeObject(obj.toString());
 //         //关闭流
 //        objectOutputStream.close();
-
         OutputStreamWriter osw = new OutputStreamWriter(fileOutputStream, "utf-8");
-
         String writeStr = MessageFormat.format("{0}:{1}\n",
                 DateUtil.toString(DateUtil.getCurDate(), DateUtil.DATE_PATTERN_YYYYMMDDHHmmSS),
                 obj.toString());
@@ -88,7 +78,7 @@ public class FileUtil {
         fileOutputStream.close();
     }
 
-    public static List<FileContentVo> readObj(File file){
+    /*public static List<FileContentVo> readObj(File file){
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
         List<FileContentVo> list = new ArrayList<FileContentVo>();
@@ -114,20 +104,10 @@ public class FileUtil {
             e.printStackTrace();
         }
         return list;
-    }
+    }*/
 
     @Async
-    public void saveChatMessage(SendChatMessageReqt sendChatMessageReqt) throws Exception {
-        String fileName = sendChatMessageReqt.getToId();
-        if (StringUtils.equals(sendChatMessageReqt.getMessageType(), WebSocketConsts.MESSAGE_TYPE_SYSTEM)) {
-            fileName = WebSocketConsts.SYSTEM_FILE_NAME;
-        }
-
-        SaveChatMessageVo saveChatMessageVo = new SaveChatMessageVo();
-        saveChatMessageVo.setSendDate(DateUtil.getCurDate());
-        saveChatMessageVo.setSendMessage(sendChatMessageReqt.getSendMessage());
-        saveChatMessageVo.setSendName(WebSocketInfoUtil.chatInfoMap.get(sendChatMessageReqt.getSendSid()).getName());
-        saveChatMessageVo.setSendSid(sendChatMessageReqt.getSendSid());
-        this.writeObj(null, fileName, saveChatMessageVo);
+    public void saveChatMessage(String fileName, MessageToFileVo params) throws Exception {
+        this.writeObj(null, fileName, params);
     }
 }
