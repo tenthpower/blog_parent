@@ -172,10 +172,21 @@ function onlineUpdate(data) {/* {"chatCount":0,"groupCount":0,"chatInfoList":[{"
     $("#privatelyChat").text('好友(0/0)');
     $("#chatListDiv").empty();
     data.chatInfoList.forEach(function iForEach(item, index) {
-        $("#chatListDiv").append("<button id='btn"+item.sid+"' class=\"ui fluid button teacher\">"+item.name+"</button>");
+        $("#chatListDiv").append("<button class='ui fluid button teacher'" +
+            " onclick='onPrivatelyChat(\""+item.sid+"\")'><i" +
+            " class='green user icon'></i>"+item.name+"</button>");
     })
 }
 
+/*私聊*/
+function onPrivatelyChat(sid) {
+    /*隐藏所有的聊天块*/
+    $(".ui segments").attr("style","display:none");
+    /*判断当前sid 是否存在聊天DIV*/
+    if($("#"+sid+"").length == 0){
+        $("#chatDivList").append('');
+    }
+}
 
 function sendMessage(){
     if (sid == null || sid == '') {
