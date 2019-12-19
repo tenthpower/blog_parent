@@ -1,24 +1,25 @@
 package com.blog.controller;
 
 import com.blog.consts.WebSocketConsts;
-import com.blog.dto.GetInfoBySidResp;
-import com.blog.dto.GetInfoByTelNoResp;
-import com.blog.dto.SendChatMessageReqt;
+import com.blog.dto.*;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.util.*;
 import com.blog.util.vo.MessageToFileVo;
 import com.blog.util.vo.WSMessageVo;
+import com.blog.vo.CustomMessage;
 import com.blog.websocket.SocketSessionRegistry;
 import com.blog.websocket.vo.UserInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +48,54 @@ public class ChatController {
                 .stream().filter(userInfo -> userInfo.getIsOnline() == WebSocketConsts.STATUS_ONLINE).count();
         log.info("当前在线总人数：{}", count);
         return new Result(true, StatusCode.OK, "查询成功", count);
+    }
+
+    /**
+     * 进行登陆
+     */
+    @PostMapping(value="/loginIn")
+    @ApiOperation(value="发送消息")
+    public Result sendChatMessage(LoginInReqt params) throws Exception {
+        log.debug("进行登陆，请求参数[{}]：", params);
+        // 连接加入到在线map中
+        UserInfo userInfo = new UserInfo();
+        userInfo.setTelNo(params.getTelNo());
+        if (!StringUtils.equals(params.getSid(), ShaEncodeUtil.shaEncode(params.getTelNo()))) {
+            return new Result(true, StatusCode.LOGINERROR, "登陆失败！", null);
+        }
+        userInfo.setSid(params.getSid());
+        // 加入人员信息
+        SocketSessionRegistry.addUserInfo(userInfo);
+
+        // 广播系统消息
+        WSMessageVo wsMessageVo =  new WSMessageVo();
+        wsMessageVo.setMessageType(WebSocketConsts.TYPE_SYSTEM);
+        wsMessageVo.setSendMessage(MessageFormat.format("[{0}]连接到服务器。", params.getName()));
+        wsMessageVo.setSendSid(WebSocketConsts.TYPE_SYSTEM);
+        wsMessageVo.setSendUserName(WebSocketConsts.TYPE_SYSTEM);
+        wsMessageVo.setSendDate(DateUtil.toString(DateUtil.getCurDate(),DateUtil.DATE_PATTERN_YYYYMMDDHHmmSS));
+        WSMessageUtil.sendMessage(wsMessageVo);
+
+        // 广播在线人员信息
+        WSMessageUtil.sendOnlineInfo();
+
+        // 获取在线好友，分组信息
+        String sid = params.getSid();
+        List<UserInfo> friendUsers = new ArrayList<>();
+        SocketSessionRegistry.friendInfoMap.values()
+                .stream().filter(fInfo -> StringUtils.equals(sid, fInfo.getASid()))
+                .forEach(fInfo -> friendUsers.add(SocketSessionRegistry.registryUserInfoMap.get(fInfo.getBSid())));
+        SocketSessionRegistry.friendInfoMap.values()
+                .stream().filter(fInfo -> StringUtils.equals(sid, fInfo.getBSid()))
+                .forEach(fInfo -> friendUsers.add(SocketSessionRegistry.registryUserInfoMap.get(fInfo.getASid())));
+        Long onlineCount = friendUsers.stream().filter(finfo
+                -> finfo.getIsOnline() == WebSocketConsts.STATUS_ONLINE).count();
+
+        LoginInResp resultData = new LoginInResp();
+        resultData.setSid(sid);
+        resultData.setFriendUsers(friendUsers);
+        resultData.setOnlineFriendCount(onlineCount.intValue());
+        return new Result(true, StatusCode.OK, "登陆成功！", resultData);
     }
 
     /**

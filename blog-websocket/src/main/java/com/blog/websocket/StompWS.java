@@ -1,6 +1,7 @@
 package com.blog.websocket;
 
 import com.blog.consts.WebSocketConsts;
+import com.blog.util.DateUtil;
 import com.blog.util.ShaEncodeUtil;
 import com.blog.util.WSMessageUtil;
 import com.blog.util.vo.WSMessageVo;
@@ -12,10 +13,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.annotation.SendToUser;
+import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
 
+import java.security.Principal;
 import java.text.MessageFormat;
 
+/**
+ * STOMP 的消息根据前缀的不同分为三种。如下，
+ *  以 /app 开头的消息都会被路由到带有@MessageMapping或 @SubscribeMapping 注解的方法中；
+ *  以/topic 或 /queue 开头的消息都会发送到STOMP代理中，根据你所选择的STOMP代理不同，目的地的可选前缀也会有所限制；
+ *  以/user开头的消息会将消息重路由到某个用户独有的目的地上。
+ */
 @Controller
 public class StompWS {
 
@@ -26,20 +36,17 @@ public class StompWS {
 
 
     /**
-     * @Description:这个方法是接收客户端发送功公告的WebSocket请求，使用的是@MessageMapping
+     * @Description:这个方法是接收客户端发送功的WebSocket请求，使用的是@MessageMapping
      * @Author: 和彦鹏
      * @Date: 2019年12月5日
      */
     @MessageMapping("/change-notice")
     @SendTo("/topic/online")
-    public void greeting(CustomMessage message) throws Exception {
+    public void greeting(CustomMessage message,StompHeaderAccessor stompHeaderAccessor,Principal principal) throws Exception {
         log.debug("服务端接收到连接信息：", message);
         // 连接加入到在线map中
         UserInfo userInfo = new UserInfo();
         userInfo.setTelNo(message.getTelNo());
-        if (!StringUtils.equals(message.getSid(), ShaEncodeUtil.shaEncode(message.getTelNo()))) {
-            return;
-        }
         userInfo.setSid(message.getSid());
 
         // 加入人员信息
@@ -51,9 +58,34 @@ public class StompWS {
         wsMessageVo.setSendMessage(MessageFormat.format("[{0}]连接到服务器。", message.getName()));
         wsMessageVo.setSendSid(WebSocketConsts.TYPE_SYSTEM);
         wsMessageVo.setSendUserName(WebSocketConsts.TYPE_SYSTEM);
+        wsMessageVo.setSendDate(DateUtil.toString(DateUtil.getCurDate(),DateUtil.DATE_PATTERN_YYYYMMDDHHmmSS));
         WSMessageUtil.sendMessage(wsMessageVo);
 
         // 广播在线人员信息
         WSMessageUtil.sendOnlineInfo();
     }
+
+    @MessageMapping("/shout")
+    @SendToUser("/queue/notifications")
+    public CustomMessage userStomp(Principal principal, CustomMessage customMessage) {
+        String name = principal.getName();
+        String message = customMessage.getMessage();
+        log.info("认证的名字是：{}，收到的消息是：{}", name, message);
+        return customMessage;
+    }
+
+    @MessageMapping("/singleShout")
+    public void singleUser(CustomMessage customMessage, StompHeaderAccessor stompHeaderAccessor) {
+        String message = customMessage.getMessage();
+        log.info("接收到消息：" + message);
+        Principal user = stompHeaderAccessor.getUser();
+        WSMessageVo wsMessageVo = new WSMessageVo();
+        wsMessageVo.setSendDate(DateUtil.toString(DateUtil.getCurDate(),DateUtil.DATE_PATTERN_YYYYMMDDHHmmSS));
+        wsMessageVo.setMessageType(WebSocketConsts.TYPE_USER);
+        wsMessageVo.setSendMessage(customMessage.getMessage());
+        wsMessageVo.setSendSid(customMessage.getSid());
+        wsMessageVo.setSendUserName(SocketSessionRegistry.registryUserInfoMap.get(customMessage.getSid()).getName());
+        WSMessageUtil.singleSendMessage(wsMessageVo, user.getName());
+    }
+
 }

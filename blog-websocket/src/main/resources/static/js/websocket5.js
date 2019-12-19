@@ -1,30 +1,42 @@
 var stompClient = null;
-var sid = "";
-var telNo ="";
-var name = "";
+var sid,telNo,name = "";
+var currentMenu = "publicChat";
+var headers={};
 
-/*监听手机号输入事件*/
+function connect() {
+    var socket = new SockJS('/socket');
+    stompClient = Stomp.over(socket);
+    stompClient.connect(headers, function(frame) {
+        console.log('订阅在线人数变更广播[/topic/online]');
+        stompClient.subscribe('/topic/online', function(respnose){
+            onlineUpdate(JSON.parse(respnose.body));
+        });
+        console.log('订阅公聊消息广播[/topic/notice]');
+        stompClient.subscribe('/topic/notice', function(respnose){
+            showResponse(JSON.parse(respnose.body));
+        });
+    });
+}
+
 function telNoOnBlur() {
     var telNumber = $("#telNo").val();
     if (telNumber.length != 11 || !isPoneAvailable(telNumber)) {
         return;
     }
     telNo = telNumber;
-    /* 通过手机号 获取信息，看有没有登陆信息[返回sid, 是否有登陆]*/
     $.ajax({
         url: "/api/chat/getInfoByTelNo/" + telNumber,
         type: "GET",
         data: {},
-        success: function (res) {/* {flag:true,data:{isLogin:true,sid:'aa',name:'aa'}} */
+        success: function (res) {
             console.log("消息发送结果:" + res);
             if (res.flag) {
                 sid = res.data.sid;
-                if (res.data.isLogin) {/*登陆*/
+                if (res.data.isLogin) {
                     name = res.data.name;
-                    /*对话框，是否要直接进行连接*/
                     var flags = confirm("当前手机号已经登陆，是否直接登陆?");
                     if (flags) {
-                        login(true);/*进行登陆*/
+                        login(true);
                     }
                 } else {
                     console.log("当前手机号未登陆。。。");
@@ -37,16 +49,11 @@ function telNoOnBlur() {
     });
 };
 
-/*页面加载/刷新，重置连接*/
 function resetConnect() {
     if (stompClient != null) {
         stompClient.disconnect();
     }
 
-    /*重新连接*/
-    connect();
-
-    /* 加载cookie 数据中的sid,telNo，name */
     sid = getCookie("sid");
     if (sid == null || sid == "") {
         $('#loginModal').modal('show');
@@ -56,7 +63,7 @@ function resetConnect() {
         url: "/api/chat/getInfoBySid/" + sid,
         type: "GET",
         data: {},
-        success: function (res) {/* {flag:true,} */
+        success: function (res) {
             console.log("消息发送结果:" + res);
             if (res.flag
                 && res.data != null
@@ -69,7 +76,6 @@ function resetConnect() {
                     telNo = res.data.telNo;
                     $("#name").val(telNo);
                     $("#telNo").val(telNo);
-                    /*进行登陆*/
                     login(true);
                 } else {
                     $('#loginModal').modal('show');
@@ -86,33 +92,6 @@ function resetConnect() {
     });
 }
 
-
-function connect() {
-    var socket = new SockJS('/socket');
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, function(frame) {
-        console.log('订阅[/topic/online]');
-        stompClient.subscribe('/topic/online', function(respnose){
-            onlineUpdate(JSON.parse(respnose.body));
-        });
-        console.log('订阅[/topic/notice]');
-        stompClient.subscribe('/topic/notice', function(respnose){
-            showResponse(JSON.parse(respnose.body));
-        });
-    });
-}
-
-function setView(isConnect) {
-    if (isConnect) {
-        document.getElementById('myContent').style.display = 'block';
-        document.getElementById('wecomeInfo').innerText = "欢迎您：" + name;
-    } else {
-        document.getElementById('myContent').style.display = 'none';
-        document.getElementById('wecomeInfo').innerText = "";
-    }
-}
-
-/*进行登陆*/
 function login(autoLogin){
     var telNumber = $("#telNo").val();
     if (!isPoneAvailable(telNumber)) {
@@ -120,73 +99,34 @@ function login(autoLogin){
         return;
     }
     name = $("#name").val();
+    var isHiddenTelNo = 0;
+    if ($("#isHiddenTelNo").val()) {
+        isHiddenTelNo = 1;
+    }
     console.log("name : " + name);
     console.log("sid : " + sid);
     console.log("telNo : " + telNo);
-
-    /*进行连接*/
-    try {
+    headers.username = sid;
+    headers.password = telNo;
+    connect();
+    /*try {
         stompClient.send(
             "/app/change-notice",
             {},
-            JSON.stringify({'sid':sid,"telNo": telNo, 'name': name })
+            JSON.stringify({'sid':sid,"telNo": telNo, 'name': name,'isHiddenTelNo':isHiddenTelNo})
         );
     } catch(err) {
-        console.log("订阅异常change-notice："+err);
-    }
+        debugger
+        console.log("change-notice："+err);
+    }*/
 
     setCookie("sid",sid);
     setCookie("telNo",telNo);
     setCookie("name",name);
-    setView(true);
     $('#loginModal').modal('hide');
-
+    setView(true);
 };
 
-function showResponse(data){
-    var name ="";
-    if (data.sendSid == sid) {
-        name = "我";
-    } else {
-        name= data.sendUserName;
-    }
-    var divText = "<div class=\"event\">" +
-        "              <div class=\"label\">" +
-        "                  <i class=\"green user icon\"></i>" +
-        "              </div>" +
-        "              <div class=\"content\">" +
-        "                  <div class=\"summary\">" +
-        "                       <a>" + name + "</a>" +
-        "                       <div class=\"date\">" + data.sendDate +
-        "                       </div>" +
-        "                  </div>" +
-        "                  <div class=\"extra text\">" + data.sendMessage +
-        "                  </div>" +
-        "               </div>" +
-        "           </div>";
-    $("#chatFeedDiv").append(divText);
-}
-function onlineUpdate(data) {/* {"chatCount":0,"groupCount":0,"chatInfoList":[{"sid":"","name":"","telNo":""}]}*/
-    $("#publicChat").text('公聊('+data.chatCount +'/-)');
-    $("#groupChat").text('群聊');
-    $("#privatelyChat").text('好友(0/0)');
-    $("#chatListDiv").empty();
-    data.chatInfoList.forEach(function iForEach(item, index) {
-        $("#chatListDiv").append("<button class='ui fluid button teacher'" +
-            " onclick='onPrivatelyChat(\""+item.sid+"\")'><i" +
-            " class='green user icon'></i>"+item.name+"</button>");
-    })
-}
-
-/*私聊*/
-function onPrivatelyChat(sid) {
-    /*隐藏所有的聊天块*/
-    $(".ui segments").attr("style","display:none");
-    /*判断当前sid 是否存在聊天DIV*/
-    if($("#"+sid+"").length == 0){
-        $("#chatDivList").append('');
-    }
-}
 
 function sendMessage(){
     if (sid == null || sid == '') {
@@ -196,6 +136,7 @@ function sendMessage(){
     var messageInput = $("#messageInput").val();
     if (messageInput == "") {
         alert("发送消息不能为空哦");
+        return;
     }
     var sendTargetType = "public";// 群聊组id，私聊好友id
     var toId = "public";
@@ -222,6 +163,49 @@ function sendMessage(){
         }
     })
 }
+
+
+function onlineUpdate(data) {
+    $("#publicChat").text('公聊('+data.onlineCount +'/'+data.count+')');
+    $("#chatListDiv").empty();
+    if (currentMenu == 'publicChat') {
+        data.userInfos.forEach(function iForEach(item, index) {
+            var btnVar =
+                "<button id='"+item.sid+"' class='ui fluid button teacher' onclick='_on()'>" +
+                "<i class='green user icon'>"+item.name+"</i>" +
+                "</button>";
+            $("#chatListDiv").append(btnVar);
+        })
+    }
+}
+
+function showResponse(data){
+    var name ="";
+    if (data.sendSid == sid) {
+        name = "我";
+    } else {
+        name= data.sendUserName;
+    }
+    var message =
+        '<div class="event">' +
+        '<div class="label"><i class="green user icon"></i></div>' +
+        '<div class="summary"><a>'+ name +'</a><span class="summary">'+ data.sendDate +'</span></div>'+
+        '<div class="extra text">'+ data.sendMessage + '</div>' +
+        '</div>';
+    $("#chatFeedDiv").append(message);
+}
+function setView(isConnect) {
+    if (isConnect) {
+        document.getElementById('myContent').style.display = 'block';
+        document.getElementById('wecomeInfo').innerText = "欢迎您：" + name;
+    } else {
+        document.getElementById('myContent').style.display = 'none';
+        document.getElementById('wecomeInfo').innerText = "";
+    }
+}
+
+
+
 function isPoneAvailable(telNumber) {
     var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
     if (!myreg.test(telNumber)) {

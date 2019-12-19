@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,8 +25,12 @@ public class WSMessageUtil {
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
+    @Autowired
+    private SimpMessageSendingOperations simpMessageSendingOperations;
+
+
     /**
-     * 公聊消息：消息推送
+     * 广播消息，不指定用户，所有订阅此的用户都能收到消息
      * @param wsMessageVo
      */
     public void sendMessage(WSMessageVo wsMessageVo){
@@ -33,7 +38,7 @@ public class WSMessageUtil {
     }
 
     /**
-     * 公聊人员信息：消息推送
+     * 广播消息，不指定用户，所有订阅此的用户都能收到消息
      */
     public void sendOnlineInfo() {
         OnlineInfoVo onLineInfoVo = new OnlineInfoVo();
@@ -53,4 +58,11 @@ public class WSMessageUtil {
         messagingTemplate.convertAndSend("/topic/online", onLineInfoVo);
     }
 
+
+    /**
+     * convertAndSendToUser方法 给特定用户发送消息
+     */
+    public void singleSendMessage(WSMessageVo wsMessageVo, String sid) {
+        simpMessageSendingOperations.convertAndSendToUser(sid, "/queue/singmessage", wsMessageVo);
+    }
 }
