@@ -29,7 +29,7 @@ function telNoOnBlur() {
         type: "GET",
         data: {},
         success: function (res) {
-            console.log("消息发送结果:" + res);
+            console.log("手机号获取信息结果:" + res);
             if (res.flag) {
                 sid = res.data.sid;
                 if (res.data.isLogin) {
@@ -108,7 +108,30 @@ function login(autoLogin){
     console.log("telNo : " + telNo);
     headers.username = sid;
     headers.password = telNo;
-    connect();
+    $.ajax({
+        url: "/api/loginIn",
+        type: "POST",
+        data: {'sid':sid,"telNo": telNo, 'name': name,'isHiddenTelNo':isHiddenTelNo},
+        success: function (res) {
+            console.log("登陆结果:"+ res);
+            if (res.code == 20002) {
+                alert(res.message);
+                return;
+            }
+            sid = res.data.sid;
+            // 登陆成功，进行连接
+            connect();
+            setCookie("sid",sid);
+            setCookie("telNo",telNo);
+            setCookie("name",name);
+            $('#loginModal').modal('hide');
+            setView(true);
+        },
+        error: function (e) {
+
+        }
+    });
+
     /*try {
         stompClient.send(
             "/app/change-notice",
@@ -120,11 +143,6 @@ function login(autoLogin){
         console.log("change-notice："+err);
     }*/
 
-    setCookie("sid",sid);
-    setCookie("telNo",telNo);
-    setCookie("name",name);
-    $('#loginModal').modal('hide');
-    setView(true);
 };
 
 

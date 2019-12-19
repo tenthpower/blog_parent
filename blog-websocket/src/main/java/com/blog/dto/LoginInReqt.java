@@ -13,4 +13,6 @@ public class LoginInReqt implements Serializable {
 
     private String telNo;
 
+    private Integer isHiddenTelNo;
+
 }

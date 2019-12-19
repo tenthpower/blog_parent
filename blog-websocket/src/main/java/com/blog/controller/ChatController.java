@@ -54,7 +54,7 @@ public class ChatController {
      * 进行登陆
      */
     @PostMapping(value="/loginIn")
-    @ApiOperation(value="发送消息")
+    @ApiOperation(value="进行登陆")
     public Result sendChatMessage(LoginInReqt params) throws Exception {
         log.debug("进行登陆，请求参数[{}]：", params);
         // 连接加入到在线map中

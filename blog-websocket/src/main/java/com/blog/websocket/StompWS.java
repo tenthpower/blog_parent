@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SendToUser;
@@ -86,6 +87,20 @@ public class StompWS {
         wsMessageVo.setSendSid(customMessage.getSid());
         wsMessageVo.setSendUserName(SocketSessionRegistry.registryUserInfoMap.get(customMessage.getSid()).getName());
         WSMessageUtil.singleSendMessage(wsMessageVo, user.getName());
+    }
+
+    /**
+     * 在处理消息的时候，有可能会出错并抛出异常。因为STOMP消息异步的特点，
+     * 发送者可能永远也不会知道出现了错误。@MessageExceptionHandler标注的方法能够处理消息方法中所抛出的异常。
+     * 我们可以把错误发送给用户特定的目的地上，然后用户从该目的地上订阅消息，从而用户就能知道自己出现了什么错误
+     * @param t
+     * @return
+     */
+    @MessageExceptionHandler(Exception.class)
+    @SendToUser("/queue/errors")
+    public Exception handleExceptions(Exception t){
+        t.printStackTrace();
+        return t;
     }
 
 }
