@@ -67,20 +67,16 @@ public class ChatController {
         // 加入人员信息
         SocketSessionRegistry.addUserInfo(userInfo);
 
-        // 广播系统消息
-        WSMessageVo wsMessageVo =  new WSMessageVo();
-        wsMessageVo.setMessageType(WebSocketConsts.TYPE_SYSTEM);
-        wsMessageVo.setSendMessage(MessageFormat.format("[{0}]连接到服务器。", params.getName()));
-        wsMessageVo.setSendSid(WebSocketConsts.TYPE_SYSTEM);
-        wsMessageVo.setSendUserName(WebSocketConsts.TYPE_SYSTEM);
-        wsMessageVo.setSendDate(DateUtil.toString(DateUtil.getCurDate(),DateUtil.DATE_PATTERN_YYYYMMDDHHmmSS));
-        WSMessageUtil.sendMessage(wsMessageVo);
+        String sid = params.getSid();
 
-        // 广播在线人员信息
-        WSMessageUtil.sendOnlineInfo();
+        Integer publicCount = SocketSessionRegistry.registryUserInfoMap.size();
+        List<UserInfo> onlinePublicUsers = new ArrayList<>();
+        SocketSessionRegistry.registryUserInfoMap.values()
+                .stream().filter(finfo -> finfo.getIsOnline() == WebSocketConsts.STATUS_ONLINE)
+                .forEach(finfo -> onlinePublicUsers.add(finfo));
 
         // 获取在线好友，分组信息
-        String sid = params.getSid();
+
         List<UserInfo> friendUsers = new ArrayList<>();
         SocketSessionRegistry.friendInfoMap.values()
                 .stream().filter(fInfo -> StringUtils.equals(sid, fInfo.getASid()))
@@ -92,9 +88,13 @@ public class ChatController {
                 -> finfo.getIsOnline() == WebSocketConsts.STATUS_ONLINE).count();
 
         LoginInResp resultData = new LoginInResp();
-        resultData.setSid(sid);
-        resultData.setFriendUsers(friendUsers);
-        resultData.setOnlineFriendCount(onlineCount.intValue());
+        resultData.setSid(sid);// 当前sid
+        resultData.setPublicCount(publicCount);// 总人数
+        resultData.setOnlinePublicCount(onlinePublicUsers.size());// 在线总数
+        resultData.setOnlinePublicUsers(onlinePublicUsers);// 在线人数列表
+        resultData.setFriendCount(friendUsers.size());// 好友总数
+        resultData.setOnlineFriendCount(onlineCount.intValue());// 好友在线总数
+        resultData.setFriendUsers(friendUsers);// 好友列表
         return new Result(true, StatusCode.OK, "登陆成功！", resultData);
     }
 

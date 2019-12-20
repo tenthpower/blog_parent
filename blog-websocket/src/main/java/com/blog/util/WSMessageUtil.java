@@ -1,6 +1,7 @@
 package com.blog.util;
 
 import com.blog.consts.WebSocketConsts;
+import com.blog.util.vo.OnlineChangeVo;
 import com.blog.util.vo.OnlineInfoVo;
 import com.blog.util.vo.WSMessageVo;
 import com.blog.websocket.SocketSessionRegistry;
@@ -58,6 +59,15 @@ public class WSMessageUtil {
         messagingTemplate.convertAndSend("/topic/online", onLineInfoVo);
     }
 
+    /**
+     * 广播消息，不指定用户，所有订阅此的用户都能收到消息：人员信息变动
+     * @param sid
+     */
+    public void sendOnlineChangeStatus(String sid) {
+        OnlineChangeVo onlineChangeVo = new OnlineChangeVo();
+        onlineChangeVo.setUserInfo(SocketSessionRegistry.registryUserInfoMap.get(sid));
+        messagingTemplate.convertAndSend("/topic/onlineChange", onlineChangeVo);
+    }
 
     /**
      * convertAndSendToUser方法 给特定用户发送消息

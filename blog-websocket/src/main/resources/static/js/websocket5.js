@@ -1,14 +1,16 @@
 var stompClient = null;
-var sid,telNo,name = "";
 var currentMenu = "publicChat";
 var headers={};
+var publicCount,onlinePublicCount,friendCount,onlineFriendCount = 0;
+var onlinePublicUsers,friendUsers = [];
+var userInfo = {"sid":"","telNo":"","name":"","isHiddenTelNo":0};
 
 function connect() {
     var socket = new SockJS('/socket');
     stompClient = Stomp.over(socket);
     stompClient.connect(headers, function(frame) {
         console.log('订阅在线人数变更广播[/topic/online]');
-        stompClient.subscribe('/topic/online', function(respnose){
+        stompClient.subscribe('/topic/onlineChange', function(respnose){
             onlineUpdate(JSON.parse(respnose.body));
         });
         console.log('订阅公聊消息广播[/topic/notice]');
@@ -17,7 +19,7 @@ function connect() {
         });
     });
 }
-
+/*
 function telNoOnBlur() {
     var telNumber = $("#telNo").val();
     if (telNumber.length != 11 || !isPoneAvailable(telNumber)) {
@@ -48,7 +50,9 @@ function telNoOnBlur() {
         }
     });
 };
+*/
 
+/*
 function resetConnect() {
     if (stompClient != null) {
         stompClient.disconnect();
@@ -69,7 +73,6 @@ function resetConnect() {
                 && res.data != null
                 && res.data.telNo != null
                 && res.data.telNo != ''){
-                /*对话框，是否要直接进行连接*/
                 var flags = confirm("当前浏览器存在连接，是否直接进行连接?");
                 if (flags) {
                     name = res.data.name;
@@ -91,6 +94,7 @@ function resetConnect() {
         }
     });
 }
+*/
 
 function login(autoLogin){
     var telNumber = $("#telNo").val();
@@ -98,40 +102,45 @@ function login(autoLogin){
         alert("请输入正确的手机号");
         return;
     }
-    name = $("#name").val();
+    userInfo.name = $("#name").val();
     var isHiddenTelNo = 0;
     if ($("#isHiddenTelNo").val()) {
         isHiddenTelNo = 1;
     }
-    console.log("name : " + name);
-    console.log("sid : " + sid);
-    console.log("telNo : " + telNo);
-    headers.username = sid;
-    headers.password = telNo;
+    userInfo.isHiddenTelNo = isHiddenTelNo;
+    console.log("userInfo: " + userInfo);
+
     $.ajax({
         url: "/api/loginIn",
         type: "POST",
-        data: {'sid':sid,"telNo": telNo, 'name': name,'isHiddenTelNo':isHiddenTelNo},
+        data: userInfo,
         success: function (res) {
             console.log("登陆结果:"+ res);
             if (res.code == 20002) {
                 alert(res.message);
                 return;
             }
-            sid = res.data.sid;
+            var respData = res.data;
+            userInfo.sid = respData.sid;
+            publicCount=respData.publicCount;
+            onlinePublicCount=respData.onlinePublicCount;
+            onlinePublicUsers=respData.onlinePublicUsers;
+            friendCount=respData.friendCount;
+            onlineFriendCount=respData.onlineFriendCount;
+            friendUsers=respData.friendUsers;
+            onlineUpdate(0, null);
+            headers.username = userInfo.sid;
+            headers.password = userInfo.telNo;
             // 登陆成功，进行连接
             connect();
-            setCookie("sid",sid);
-            setCookie("telNo",telNo);
-            setCookie("name",name);
+            setCookie("sid",userInfo.sid);
+            setCookie("telNo",userInfo.telNo);
+            setCookie("name",userInfo.name);
             $('#loginModal').modal('hide');
             setView(true);
         },
-        error: function (e) {
-
-        }
+        error: function (e) {}
     });
-
     /*try {
         stompClient.send(
             "/app/change-notice",
@@ -139,7 +148,6 @@ function login(autoLogin){
             JSON.stringify({'sid':sid,"telNo": telNo, 'name': name,'isHiddenTelNo':isHiddenTelNo})
         );
     } catch(err) {
-        debugger
         console.log("change-notice："+err);
     }*/
 
@@ -183,17 +191,20 @@ function sendMessage(){
 }
 
 
-function onlineUpdate(data) {
-    $("#publicChat").text('公聊('+data.onlineCount +'/'+data.count+')');
-    $("#chatListDiv").empty();
-    if (currentMenu == 'publicChat') {
-        data.userInfos.forEach(function iForEach(item, index) {
+function onlineUpdate(type,data) {
+    debugger
+    if (0 == type) {
+        console.log("初次登陆，初始化数据..");
+        $("#publicChat").text('公聊('+onlinePublicCount +'/'+publicCount+')');
+        $("#privatelyChat").text('好友('+ onlineFriendCount +'/'+friendCount+')');
+        $("#chatListDiv").empty();
+        onlinePublicUsers.forEach(function iForEach(item, index) {
             var btnVar =
                 "<button id='"+item.sid+"' class='ui fluid button teacher' onclick='_on()'>" +
                 "<i class='green user icon'>"+item.name+"</i>" +
                 "</button>";
             $("#chatListDiv").append(btnVar);
-        })
+        });
     }
 }
 

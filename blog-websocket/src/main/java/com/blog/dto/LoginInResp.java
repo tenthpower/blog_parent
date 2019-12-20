@@ -12,6 +12,16 @@ public class LoginInResp implements Serializable {
 
     private String sid;
 
+    private Integer publicCount;
+
+    private Integer onlinePublicCount;
+
+    private List<UserInfo> onlinePublicUsers = null;
+
+
+
+    private Integer friendCount;
+
     private Integer onlineFriendCount;
 
     private List<UserInfo> friendUsers = null;
