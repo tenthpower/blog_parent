@@ -11,7 +11,7 @@ function connect() {
     stompClient.connect(headers, function(frame) {
         console.log('订阅在线人数变更广播[/topic/online]');
         stompClient.subscribe('/topic/onlineChange', function(respnose){
-            onlineUpdate(JSON.parse(respnose.body));
+            onlineUpdate(1,JSON.parse(respnose.body).userInfo);
         });
         console.log('订阅公聊消息广播[/topic/notice]');
         stompClient.subscribe('/topic/notice', function(respnose){
@@ -19,6 +19,8 @@ function connect() {
         });
     });
 }
+function telNoOnBlur() {}
+function resetConnect() {$('#loginModal').modal('show');}
 /*
 function telNoOnBlur() {
     var telNumber = $("#telNo").val();
@@ -103,6 +105,7 @@ function login(autoLogin){
         return;
     }
     userInfo.name = $("#name").val();
+    userInfo.telNo = telNumber;
     var isHiddenTelNo = 0;
     if ($("#isHiddenTelNo").val()) {
         isHiddenTelNo = 1;
@@ -155,7 +158,7 @@ function login(autoLogin){
 
 
 function sendMessage(){
-    if (sid == null || sid == '') {
+    if (userInfo.sid == null || userInfo.sid == '') {
         $('#loginModal').modal('show');
         return;
     }
@@ -170,7 +173,7 @@ function sendMessage(){
         url: "/api/chat/sendMessage",
         type: "post",
         data: {
-            "sendSid": sid,
+            "sendSid": userInfo.sid,
             "sendMessage": messageInput,
             "sendTargetType": sendTargetType,
             "toId": toId
@@ -192,7 +195,6 @@ function sendMessage(){
 
 
 function onlineUpdate(type,data) {
-    debugger
     if (0 == type) {
         console.log("初次登陆，初始化数据..");
         $("#publicChat").text('公聊('+onlinePublicCount +'/'+publicCount+')');
@@ -205,12 +207,40 @@ function onlineUpdate(type,data) {
                 "</button>";
             $("#chatListDiv").append(btnVar);
         });
+    } else if (1 == type) {
+        console.log("人员信息状态变动..");
+        var changeUserInfo = forEachList(data.sid, onlinePublicUsers);
+        if (changeUserInfo == null) {
+            publicCount++;onlinePublicCount++;
+            $("#publicChat").text('公聊('+onlinePublicCount +'/'+publicCount+')');
+            var btnVar =
+                "<button id='"+data.sid+"' class='ui fluid button teacher' onclick='_on()'>" +
+                "<i class='green user icon'>"+data.name+"</i>" +
+                "</button>";
+            $("#chatListDiv").append(btnVar);
+        } else {
+            var btnVar =
+                "<button id='"+data.sid+"' class='ui fluid button teacher' onclick='_on()'>" +
+                "<i class='green user icon'>"+data.name+"</i>" +
+                "</button>";
+            $("#chatListDiv").append(btnVar);
+        }
+
     }
+}
+
+function forEachList(sid, arr) {
+    for(j = 0; j < arr.length; j++) {
+        if (arr[j].sid == sid) {
+            return arr[j];
+        }
+    }
+    return null;
 }
 
 function showResponse(data){
     var name ="";
-    if (data.sendSid == sid) {
+    if (data.sendSid == userInfo.sid) {
         name = "我";
     } else {
         name= data.sendUserName;
@@ -218,15 +248,15 @@ function showResponse(data){
     var message =
         '<div class="event">' +
         '<div class="label"><i class="green user icon"></i></div>' +
-        '<div class="summary"><a>'+ name +'</a><span class="summary">'+ data.sendDate +'</span></div>'+
-        '<div class="extra text">'+ data.sendMessage + '</div>' +
-        '</div>';
+        '<div class="summary"><a><b>'+ name +'</b></a><span>'+ data.sendDate +'</span></div>'+
+        '</div>' +
+        '<div class="extra text">'+ data.sendMessage + '</div>';
     $("#chatFeedDiv").append(message);
 }
 function setView(isConnect) {
     if (isConnect) {
         document.getElementById('myContent').style.display = 'block';
-        document.getElementById('wecomeInfo').innerText = "欢迎您：" + name;
+        document.getElementById('wecomeInfo').innerText = "欢迎您：" + userInfo.name;
     } else {
         document.getElementById('myContent').style.display = 'none';
         document.getElementById('wecomeInfo').innerText = "";

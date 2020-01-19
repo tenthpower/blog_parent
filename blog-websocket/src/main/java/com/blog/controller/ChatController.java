@@ -61,9 +61,12 @@ public class ChatController {
         UserInfo userInfo = new UserInfo();
         userInfo.setTelNo(params.getTelNo());
         if (!StringUtils.equals(params.getSid(), ShaEncodeUtil.shaEncode(params.getTelNo()))) {
-            return new Result(true, StatusCode.LOGINERROR, "登陆失败！", null);
+            // return new Result(true, StatusCode.LOGINERROR, "登陆失败！", null);
+            log.warn("sid=[{}]不对应手机号，重置sid。");
+            params.setSid(ShaEncodeUtil.shaEncode(params.getTelNo()));
         }
         userInfo.setSid(params.getSid());
+        userInfo.setName(params.getName());
         // 加入人员信息
         SocketSessionRegistry.addUserInfo(userInfo);
 
