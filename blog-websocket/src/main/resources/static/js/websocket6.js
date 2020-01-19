@@ -199,7 +199,7 @@ function onlineUpdate(type,data) {
         console.log("初次登陆，初始化数据..");
         $("#publicChat").text('公聊('+onlinePublicCount +'/'+publicCount+')');
         $("#privatelyChat").text('好友('+ onlineFriendCount +'/'+friendCount+')');
-        $("#chatListDiv").empty();
+        $("#chatListUl").empty();
         onlinePublicUsers.forEach(function iForEach(item, index) {
             var userInfoVar =
                 "<li style='background: #ebebec;'>\n" +
@@ -209,7 +209,7 @@ function onlineUpdate(type,data) {
                 "        <span class='infor'>[暂无]</span>\n" +
                 "   </div>\n" +
                 "</li>";
-            $("#chatListDiv").append(userInfoVar);
+            $("#chatListUl").append(userInfoVar);
         });
     } else if (1 == type) {
         console.log("人员信息状态变动..");
@@ -225,7 +225,7 @@ function onlineUpdate(type,data) {
                 "        <span class='infor'>[暂无]</span>\n" +
                 "   </div>\n" +
                 "</li>";
-            $("#chatListDiv").append(userInfoVar);
+            $("#chatListUl").append(userInfoVar);
         } else {// TODO
             var userInfoVar =
                 "<li style='background: #ebebec;'>\n" +
@@ -235,7 +235,7 @@ function onlineUpdate(type,data) {
                 "        <span class='infor'>[暂无]</span>\n" +
                 "   </div>\n" +
                 "</li>";
-            $("#chatListDiv").append(userInfoVar);
+            $("#chatListUl").append(userInfoVar);
         }
 
     }
