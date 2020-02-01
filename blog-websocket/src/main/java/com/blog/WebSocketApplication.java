@@ -15,7 +15,7 @@ import java.net.UnknownHostException;
 /**
  * WebSocket服务
  */
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication
 public class WebSocketApplication extends SpringBootServletInitializer {
     private static final Logger log = LoggerFactory.getLogger(WebSocketApplication.class);
 
