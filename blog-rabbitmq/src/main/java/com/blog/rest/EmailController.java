@@ -1,7 +1,7 @@
 package com.blog.rest;
 
 import com.blog.config.DemoConfig;
-import com.blog.dto.rabbitmq.EmailVo;
+import com.blog.controller.dto.rabbitmq.EmailVo;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.sender.SendEmailSender;

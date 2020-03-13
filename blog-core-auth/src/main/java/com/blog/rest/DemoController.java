@@ -1,8 +1,8 @@
 package com.blog.rest;
 
 import com.blog.contant.CommonContant;
-import com.blog.dto.user.SysAdminVo;
-import com.blog.dto.user.SysRoleVo;
+import com.blog.controller.dto.user.SysAdminVo;
+import com.blog.controller.dto.user.SysRoleVo;
 import com.blog.security.auth.token.extractor.TokenExtractor;
 import com.blog.security.auth.token.verifier.TokenVerifier;
 import com.blog.security.exceptions.InvalidTokenException;

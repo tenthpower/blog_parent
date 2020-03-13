@@ -1,6 +1,6 @@
 package com.blog.rest;
 
-import com.blog.dto.qa.ProblemVo;
+import com.blog.controller.dto.qa.ProblemVo;
 import com.blog.entity.PageResult;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;

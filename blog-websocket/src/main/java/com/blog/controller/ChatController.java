@@ -1,13 +1,12 @@
 package com.blog.controller;
 
 import com.blog.consts.WebSocketConsts;
-import com.blog.dto.*;
+import com.blog.controller.dto.*;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.util.*;
 import com.blog.util.vo.MessageToFileVo;
 import com.blog.util.vo.WSMessageVo;
-import com.blog.vo.CustomMessage;
 import com.blog.websocket.SocketSessionRegistry;
 import com.blog.websocket.vo.UserInfo;
 import io.swagger.annotations.Api;
@@ -19,7 +18,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

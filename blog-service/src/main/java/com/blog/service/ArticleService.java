@@ -2,7 +2,7 @@ package com.blog.service;
 
 import com.blog.constants.VoConstants;
 import com.blog.dao.ArticleDao;
-import com.blog.dto.article.ArticleVo;
+import com.blog.controller.dto.article.ArticleVo;
 import com.blog.pojo.Article;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

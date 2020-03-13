@@ -1,6 +1,6 @@
 package com.blog.rest;
 
-import com.blog.dto.article.ColumnVo;
+import com.blog.controller.dto.article.ColumnVo;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.service.ColumnService;

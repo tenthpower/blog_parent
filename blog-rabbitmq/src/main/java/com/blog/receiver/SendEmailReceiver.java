@@ -1,7 +1,7 @@
 package com.blog.receiver;
 
 import com.blog.config.EmailConfig;
-import com.blog.dto.rabbitmq.EmailVo;
+import com.blog.controller.dto.rabbitmq.EmailVo;
 import com.blog.util.EmailUtils;
 import com.blog.util.QueueConstant;
 import org.apache.commons.lang3.StringUtils;

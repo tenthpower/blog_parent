@@ -1,10 +1,7 @@
 package com.blog.service;
 
-import com.blog.dao.SysAdminDao;
 import com.blog.dao.SysRoleDao;
-import com.blog.dto.user.SysAdminVo;
-import com.blog.dto.user.SysRoleVo;
-import com.blog.pojo.SysAdmin;
+import com.blog.controller.dto.user.SysRoleVo;
 import com.blog.pojo.SysRole;
 import com.blog.util.BeanCopierEx;
 import org.springframework.beans.factory.annotation.Autowired;

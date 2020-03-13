@@ -2,17 +2,126 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e2c45b9a-3eb5-483b-97b5-deecb6510aa2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInReqt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInResp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/UserInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dao/UserDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/pojo/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/service/UserInfoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/service/impl/UserInfoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/com/blog/dto/SqlBaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/com/blog/controller/dto/SqlBaseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysApiresources.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysApiresources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysApiresourcesMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysApiresourcesMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysApiresourcesRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysApiresourcesRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysRoleAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysRoleAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysRoleMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/SysRoleMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/rest/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/rest/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/rest/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/rest/DemoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/rest/FollowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/rest/FollowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/rest/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/rest/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/security/auth/login/LoginAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/security/auth/login/LoginAuthenticationProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/FollowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/FollowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/SysAdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/SysAdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/SysRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/SysRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core-auth/src/main/java/com/blog/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/rest/base/CommonObjectRest.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/rest/base/CommonObjectRest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/service/common/CreateApiByTableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/service/common/CreateApiByTableService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/service/common/CreateApiValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/service/common/CreateApiValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/service/common/QueryTableInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/service/common/QueryTableInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/util/DemoVmHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-core/src/main/java/com/blog/util/DemoVmHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/article/ArticleVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/article/ArticleVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/article/ChannelVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/article/ChannelVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/article/ColumnVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/article/ColumnVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/article/CommentVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/article/CommentVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/core/common/CreateApiByTableReqt.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/core/common/CreateApiByTableReqt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/core/common/CreateApiByTableResp.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/core/common/CreateApiByTableResp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/friend/FriendVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/friend/FriendVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/gathering/GatheringVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/gathering/GatheringVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/gathering/UsergathVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/gathering/UsergathVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/lable/CityVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/lable/CityVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/lable/LabelVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/lable/LabelVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/lable/UlVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/lable/UlVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/qa/PlVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/qa/PlVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/qa/ProblemVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/qa/ProblemVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/qa/ReplyVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/qa/ReplyVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/rabbitmq/DemoVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/rabbitmq/DemoVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/rabbitmq/EmailVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/rabbitmq/EmailVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/rabbitmq/ReceiverPeoperVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/rabbitmq/ReceiverPeoperVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/recruit/EnterpriseVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/recruit/EnterpriseVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/recruit/RecruitVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/recruit/RecruitVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/spit/SpitVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/spit/SpitVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/user/AdminVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/user/AdminVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/user/FollowVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/user/FollowVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/user/SysAdminVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/user/SysAdminVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/user/SysRoleVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/user/SysRoleVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/dto/user/UserVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-feign/src/main/java/com/blog/controller/dto/user/UserVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-friend/src/main/java/com/blog/pojo/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-friend/src/main/java/com/blog/pojo/Friend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-friend/src/main/java/com/blog/rest/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-friend/src/main/java/com/blog/rest/FriendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-friend/src/main/java/com/blog/service/FriendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-friend/src/main/java/com/blog/service/FriendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/receiver/DemoReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/receiver/DemoReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/receiver/SendEmailReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/receiver/SendEmailReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/rest/EmailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/rest/EmailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/sender/DemoSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/sender/DemoSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/sender/SendEmailSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/sender/SendEmailSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/util/EmailUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-rabbitmq/src/main/java/com/blog/util/EmailUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Column.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Enterprise.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Enterprise.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Gathering.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Gathering.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Label.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Label.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Pl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Pl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Problem.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Problem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Recruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Recruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Reply.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Reply.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Spit.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Spit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Ul.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Ul.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Usergath.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Usergath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ChannelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ChannelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/CityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/CityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ColumnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ColumnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/EnterpriseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/EnterpriseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/GatheringController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/GatheringController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/LabelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/LabelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/PlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/PlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ProblemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ProblemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/RecruitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/RecruitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ReplyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/ReplyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/SpitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/SpitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/UlController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/UlController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/UsergathController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/rest/UsergathController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ChannelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ChannelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/CityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/CityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ColumnService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ColumnService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/EnterpriseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/EnterpriseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/GatheringService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/GatheringService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/LabelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/LabelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/PlService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/PlService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ProblemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ProblemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/RecruitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/RecruitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ReplyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/ReplyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/SplitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/SplitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/UlService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/UlService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/UsergathService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service/src/main/java/com/blog/service/UsergathService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-websocket/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WSMessageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WSMessageUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/CustomMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/CustomMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/StompWS.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/StompWS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo5.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket5.js" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/GetInfoBySidResp.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/dto/GetInfoBySidResp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/GetInfoByTelNoResp.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/dto/GetInfoByTelNoResp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInReqt.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/dto/LoginInReqt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInResp.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/dto/LoginInResp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/SendChatMessageReqt.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/dto/SendChatMessageReqt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/UserInfo.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/blog-service/target/" />
     <ignored path="$PROJECT_DIR$/blog-core-config/target/" />
@@ -41,45 +150,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo5.html">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="37" column="29" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="29" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket5.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
-              <folding>
-                <element signature="n#!!block;n#isPoneAvailable#0" />
-                <element signature="n#!!block;n#getCookie#0" />
-                <element signature="n#!!block;n#setCookie#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/WebSocketApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="1850">
+              <caret line="94" column="68" selection-start-line="91" selection-start-column="8" selection-end-line="94" selection-end-column="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,33 +162,80 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/STOMPWebSocket.txt">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/UserInfoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+            <state relative-caret-position="800">
+              <caret line="44" column="57" selection-start-line="44" selection-start-column="57" selection-end-line="44" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WSMessageUtil.java">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/service/impl/UserInfoServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="64" column="34" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="57" />
+            <state relative-caret-position="1050">
+              <caret line="61" column="15" selection-start-line="61" selection-start-column="15" selection-end-line="61" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="docComment;method#sendMessage#0;class#WSMessageUtil#0" />
-                <element signature="method#sendOnlineInfo#0;class#WSMessageUtil#0" />
+                <element signature="e#2986#2987#0" expanded="true" />
+                <element signature="e#3013#3014#0" expanded="true" />
+                <element signature="e#3082#3083#0" expanded="true" />
+                <element signature="e#3109#3110#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/UserInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="575">
+              <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.1.2.RELEASE/spring-data-commons-2.1.2.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1200">
+              <caret line="62" column="22" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/pojo/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#959#960#0" expanded="true" />
+                <element signature="e#993#994#0" expanded="true" />
+                <element signature="e#1282#1283#0" expanded="true" />
+                <element signature="e#1313#1314#0" expanded="true" />
+                <element signature="e#1578#1579#0" expanded="true" />
+                <element signature="e#1609#1610#0" expanded="true" />
+                <element signature="e#1892#1893#0" expanded="true" />
+                <element signature="e#1923#1924#0" expanded="true" />
+                <element signature="e#2185#2186#0" expanded="true" />
+                <element signature="e#2216#2217#0" expanded="true" />
+                <element signature="e#2265#2266#0" expanded="true" />
+                <element signature="e#2305#2306#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/StompWS.java">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/aspect/BaseRestAspect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="86" column="115" selection-start-line="86" selection-start-column="115" selection-end-line="86" selection-end-column="115" />
+            <state relative-caret-position="442">
+              <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,17 +244,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="862">
-              <caret line="100" column="5" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+            <state relative-caret-position="1500">
+              <caret line="60" column="21" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/config/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="20" selection-start-line="20" selection-end-line="21" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/service/UserInfoService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
               <folding>
-                <element signature="e#1297#1298#0" expanded="true" />
-                <element signature="e#1360#1361#0" expanded="true" />
-                <element signature="e#2518#3566#0" expanded="true" />
-                <element signature="e#3309#3310#0" expanded="true" />
-                <element signature="e#3380#3381#0" expanded="true" />
-                <element signature="e#3565#3566#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,16 +281,12 @@
         <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>/topic/notice</find>
-      <find>sendName</find>
-      <find>frame</find>
-      <find>createFileSureBut</find>
-      <find>send</find>
       <find>jackson.version</find>
       <find>setView</find>
       <find>stompClient</find>
@@ -171,8 +301,6 @@
       <find>loginModal</find>
       <find>wecomeInfo</find>
       <find>sendTargetType</find>
-      <find>chatListDiv</find>
-      <find>chatFeedDiv</find>
       <find>FileContentVo</find>
       <find>ChatMessage</find>
       <find>CustomMessage</find>
@@ -180,6 +308,15 @@
       <find>util.sendMessage(</find>
       <find>showResponse</find>
       <find>connect()</find>
+      <find>registerStompEndpoints</find>
+      <find>configureClientInboundChannel</find>
+      <find>telNo</find>
+      <find>sid</find>
+      <find>liRight</find>
+      <find>liLeft</find>
+      <find>chatFeedDiv</find>
+      <find>chatListDiv</find>
+      <find>Mongo</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -196,17 +333,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/OnLineInfoVo.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WebSocketInfoUtil.java" />
-        <option value="$PROJECT_DIR$/blog-common/src/main/java/com/blog/config/RedisConfig.java" />
-        <option value="$PROJECT_DIR$/blog-common/src/main/java/com/blog/config/ObjectMapperConfiguration.java" />
-        <option value="$PROJECT_DIR$/blog-common/src/main/java/com/blog/util/ObjectMapperEx.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/FileContentVo.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/ConfigProperties.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/DateUtil.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/logback-spring.xml" />
-        <option value="$PROJECT_DIR$/blog-common/src/main/java/com/blog/entity/Result.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/config.properties" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo4.html" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/index.html" />
@@ -223,30 +349,41 @@
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/GroupInfo.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/ShaEncodeUtil.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/SendChatMessageReqt.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/ChatMessage.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/SaveChatMessageVo.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/GetInfoBySidResp.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/GetInfoByTelNoResp.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/OnlineInfoVo.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/UserInfo.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/SocketSessionRegistry.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/MessageToFileVo.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/WSMessageVo.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/aspect/BaseRestAspect.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/STOMPWebSocket.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/FileUtil.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo5.html" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInReqt.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInResp.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/pom.xml" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/WebSocketApplication.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket5.js" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/CustomMessage.java" />
-        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WSMessageUtil.java" />
         <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/StompWS.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInReqt.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/IPrincipal.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/说明.md" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInResp.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/OnlineChangeVo.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WSMessageUtil.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket5.js" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo5.html" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo6.html" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket6.js" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/WebSocketApplication.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/resources/config/application.yml" />
+        <option value="$PROJECT_DIR$/blog-websocket/pom.xml" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/UserInfoController.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/service/UserInfoService.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dao/UserDao.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/pojo/User.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/service/impl/UserInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/UserInfo.java" />
+        <option value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/aspect/BaseRestAspect.java" />
       </list>
     </option>
   </component>
@@ -275,9 +412,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="27" />
-    <option name="y" value="10" />
-    <option name="width" value="1346" />
+    <option name="x" value="138" />
+    <option name="y" value="30" />
+    <option name="width" value="1233" />
     <option name="height" value="698" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -289,12 +426,103 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
               <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
+              <item name="blog-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="blog" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
@@ -359,57 +587,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="consts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="vo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-              <item name="websocket" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
@@ -426,23 +604,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="blog-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="blog-parent" type="462c0819:PsiDirectoryNode" />
-              <item name="blog-websocket" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -455,7 +622,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1571930460450" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket" />
+    <property name="editor.config.ad.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-websocket/src/main/resources/static/js" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -471,18 +639,18 @@
       <recent name="D:\IntelliJ IDEA Workspace\tenthpower_parent\blog-core\src\main\resources\config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.blog.dto" />
       <recent name="com.blog.util.vo" />
+      <recent name="com.blog.dto" />
       <recent name="com.blog.websocket.vo" />
       <recent name="com.blog.websocket" />
       <recent name="com.blog.vo" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\java\com\blog\websocket" />
-      <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\java\com\blog\entity" />
       <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\static\js" />
       <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\static" />
-      <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources" />
+      <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\resources\static\img" />
+      <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\java\com\blog\websocket" />
+      <recent name="E:\新建文件夹\blog-parent\blog-websocket\src\main\java\com\blog\entity" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -611,7 +779,21 @@
       <workItem from="1576562366259" duration="589000" />
       <workItem from="1576633434919" duration="8985000" />
       <workItem from="1576672618542" duration="10522000" />
-      <workItem from="1576719407436" duration="8854000" />
+      <workItem from="1576719407436" duration="14328000" />
+      <workItem from="1576818601942" duration="12404000" />
+      <workItem from="1577064745352" duration="1249000" />
+      <workItem from="1577340421019" duration="14000" />
+      <workItem from="1578459747398" duration="599000" />
+      <workItem from="1578879327350" duration="30000" />
+      <workItem from="1579397959887" duration="7451000" />
+      <workItem from="1580532051511" duration="7397000" />
+      <workItem from="1580696969332" duration="29000" />
+      <workItem from="1581510003549" duration="1405000" />
+      <workItem from="1581555561077" duration="176000" />
+      <workItem from="1581651568809" duration="184000" />
+      <workItem from="1581657984162" duration="43000" />
+      <workItem from="1581739726545" duration="27000" />
+      <workItem from="1581904388068" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="增加">
       <created>1575429059976</created>
@@ -718,11 +900,60 @@
       <option name="project" value="LOCAL" />
       <updated>1576678122846</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="demo5">
+      <created>1576736680422</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1576736680422</updated>
+    </task>
+    <task id="LOCAL-00017" summary="demo5">
+      <created>1576741195897</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1576741195897</updated>
+    </task>
+    <task id="LOCAL-00018" summary="demo5">
+      <created>1576823065796</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1576823065796</updated>
+    </task>
+    <task id="LOCAL-00019" summary="demo5">
+      <created>1579414366801</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1579414366802</updated>
+    </task>
+    <task id="LOCAL-00020" summary="demo6">
+      <created>1579418257738</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1579418257738</updated>
+    </task>
+    <task id="LOCAL-00021" summary="demo6">
+      <created>1579428566009</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1579428566009</updated>
+    </task>
+    <task id="LOCAL-00022" summary="增加数据库">
+      <created>1580537157826</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1580537157826</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141505000" />
+    <option name="totallyTimeSpent" value="178009000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -735,9 +966,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27685326" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26701966" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -747,8 +977,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.048387095" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.048387095" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.048387095" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.55" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.048387095" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
@@ -766,7 +996,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.022692889" />
+      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.08018155" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" />
@@ -816,7 +1046,9 @@
     <MESSAGE value="增加" />
     <MESSAGE value="增加feign打包" />
     <MESSAGE value="demo5" />
-    <option name="LAST_COMMIT_MESSAGE" value="demo5" />
+    <MESSAGE value="demo6" />
+    <MESSAGE value="增加数据库" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加数据库" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -854,308 +1086,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/isocket.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="4118" selection-start-column="4118" selection-end-column="4118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="20" column="15" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="15" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#ul#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="161" column="30" lean-forward="true" selection-start-line="161" selection-start-column="4" selection-end-line="161" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/ProcessInstanceResource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="179" column="29" selection-start-line="179" selection-start-column="29" selection-end-line="179" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/STOMPWebSocket.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/setting.xml" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/ConfigProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/entity/StatusCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/entity/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-feign/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="23" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/DateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-322">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="52" column="8" selection-start-line="52" selection-start-column="8" selection-end-line="56" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/SocketSessionRegistry.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/UserInfo.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/GroupInfo.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/GroupInfoVo.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/OnLineInfoVo.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/FriendInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/GroupInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="1095" column="15" selection-start-line="1095" selection-start-column="15" selection-end-line="1095" selection-end-column="15" />
-          <folding>
-            <element signature="e#48122#48123#0" expanded="true" />
-            <element signature="e#48173#48174#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/ShaEncodeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1075">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/SendChatMessageReqt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/util/stream/Stream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="497" column="16" selection-start-line="497" selection-start-column="9" selection-end-line="497" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/GetInfoBySidResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="17" column="31" selection-start-line="17" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/GetInfoByTelNoResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/OnlineInfoVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/UserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/SocketSessionRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="43" selection-start-line="43" selection-end-line="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/SaveChatMessageVo.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/MessageToFileVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/FileContentVo.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/ChatMessage.java" />
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/aspect/BaseRestAspect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1108">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/FileUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="106" column="7" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/WSMessageVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInReqt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dto/LoginInResp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="10" column="50" lean-forward="true" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="93" column="51" lean-forward="true" selection-start-line="93" selection-start-column="51" selection-end-line="93" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-parent/2.1.0.RELEASE/spring-boot-starter-parent-2.1.0.RELEASE.pom">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="154" column="33" lean-forward="true" selection-start-line="147" selection-start-column="20" selection-end-line="154" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="112" column="15" lean-forward="true" selection-start-line="112" selection-start-column="15" selection-end-line="112" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo5.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="37" column="29" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/WebSocketApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
-          <folding>
-            <element signature="n#!!block;n#isPoneAvailable#0" />
-            <element signature="n#!!block;n#getCookie#0" />
-            <element signature="n#!!block;n#setCookie#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1183,37 +1117,413 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java">
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/dto/LoginInReqt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="862">
-          <caret line="100" column="5" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+        <state relative-caret-position="325">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/entity/StatusCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/entity/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/src.zip!/java/security/Principal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="38" column="26" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/K2/git/pai-portal-user-service/target/classes/com/paasit/pai/core/sql/dto/process/vueEcho/ProcessEchoVueSQL14OM01.class" />
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/vo/IPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
           <folding>
-            <element signature="e#1297#1298#0" expanded="true" />
-            <element signature="e#1360#1361#0" expanded="true" />
-            <element signature="e#2518#3566#0" expanded="true" />
-            <element signature="e#3309#3310#0" expanded="true" />
-            <element signature="e#3380#3381#0" expanded="true" />
-            <element signature="e#3565#3566#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WSMessageUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="64" column="34" selection-start-line="64" selection-start-column="34" selection-end-line="64" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#sendMessage#0;class#WSMessageUtil#0" />
-            <element signature="method#sendOnlineInfo#0;class#WSMessageUtil#0" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/说明.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="311">
+            <caret line="101" column="12" lean-forward="true" selection-start-line="101" selection-start-column="12" selection-end-line="101" selection-end-column="12" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/StompWS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="86" column="115" selection-start-line="86" selection-start-column="115" selection-end-line="86" selection-end-column="115" />
+        <state relative-caret-position="247">
+          <caret line="100" column="20" selection-start-line="100" selection-start-column="20" selection-end-line="100" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/OnlineChangeVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/config/WebSocketConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="118" column="76" selection-start-line="118" selection-start-column="76" selection-end-line="118" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/WSMessageUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1075">
+          <caret line="62" column="39" lean-forward="true" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#sendMessage#0;class#WSMessageUtil#0" />
+            <element signature="e#943#944#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="true" />
+            <element signature="method#sendOnlineInfo#0;class#WSMessageUtil#0" />
+            <element signature="e#1654#1655#0" expanded="true" />
+            <element signature="e#1728#1729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/util/vo/OnlineInfoVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/SocketSessionRegistry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="19" column="34" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/dto/LoginInResp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="24" column="37" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="265" lean-forward="true" selection-start-line="265" selection-end-line="265" />
+          <folding>
+            <element signature="n#!!block;n#isPoneAvailable#0" />
+            <element signature="n#!!block;n#getCookie#0" />
+            <element signature="n#!!block;n#setCookie#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo5.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1400">
+          <caret line="56" column="22" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/demo6.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4025">
+          <caret line="161" column="38" selection-start-line="161" selection-start-column="28" selection-end-line="161" selection-end-column="38" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/static/js/websocket6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="274" column="20" selection-start-line="274" selection-start-column="20" selection-end-line="274" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/logback-spring.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/config/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-friend/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="36" selection-start-line="36" selection-end-line="53" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-search/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/dao/ChannelDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/dao/CityDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/dao/CommentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="10" column="36" lean-forward="true" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/dao/ColumnDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="57" column="23" lean-forward="true" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="67" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/WebSocketApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="27" column="9" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-common/src/main/java/com/blog/controller/dto/SqlBaseDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="31" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/pojo/Article.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-700">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-service/src/main/java/com/blog/dao/ArticleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="13" column="103" lean-forward="true" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="103" />
+          <folding>
+            <element signature="e#0#46#1" expanded="true" />
+            <element signature="e#0#54#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/dao/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/5.1.2.RELEASE/spring-tx-5.1.2.RELEASE-sources.jar!/org/springframework/dao/support/DataAccessUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="241" column="38" selection-start-line="241" selection-start-column="38" selection-end-line="241" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/consts/WebSocketConsts.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="30" column="32" selection-start-line="30" selection-start-column="32" selection-end-line="30" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1850">
+          <caret line="94" column="68" selection-start-line="91" selection-start-column="8" selection-end-line="94" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/controller/UserInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="44" column="57" selection-start-line="44" selection-start-column="57" selection-end-line="44" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/service/impl/UserInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="61" column="15" selection-start-line="61" selection-start-column="15" selection-end-line="61" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2986#2987#0" expanded="true" />
+            <element signature="e#3013#3014#0" expanded="true" />
+            <element signature="e#3082#3083#0" expanded="true" />
+            <element signature="e#3109#3110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/websocket/vo/UserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="575">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.1.2.RELEASE/spring-data-commons-2.1.2.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="62" column="22" selection-start-line="62" selection-start-column="12" selection-end-line="62" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/pojo/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#959#960#0" expanded="true" />
+            <element signature="e#993#994#0" expanded="true" />
+            <element signature="e#1282#1283#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+            <element signature="e#1578#1579#0" expanded="true" />
+            <element signature="e#1609#1610#0" expanded="true" />
+            <element signature="e#1892#1893#0" expanded="true" />
+            <element signature="e#1923#1924#0" expanded="true" />
+            <element signature="e#2185#2186#0" expanded="true" />
+            <element signature="e#2216#2217#0" expanded="true" />
+            <element signature="e#2265#2266#0" expanded="true" />
+            <element signature="e#2305#2306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="60" column="21" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/resources/config/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="20" selection-start-line="20" selection-end-line="21" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/service/UserInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog-websocket/src/main/java/com/blog/aspect/BaseRestAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="62" column="9" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

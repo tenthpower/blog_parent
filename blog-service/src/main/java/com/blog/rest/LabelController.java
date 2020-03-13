@@ -1,6 +1,6 @@
 package com.blog.rest;
 
-import com.blog.dto.lable.LabelVo;
+import com.blog.controller.dto.lable.LabelVo;
 import com.blog.entity.PageResult;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;

@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.UlDao;
-import com.blog.dto.lable.UlVo;
+import com.blog.controller.dto.lable.UlVo;
 import com.blog.pojo.Ul;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

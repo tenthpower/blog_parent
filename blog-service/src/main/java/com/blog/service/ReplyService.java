@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.ReplyDao;
-import com.blog.dto.qa.ReplyVo;
+import com.blog.controller.dto.qa.ReplyVo;
 import com.blog.pojo.Reply;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

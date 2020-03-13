@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.ProblemDao;
-import com.blog.dto.qa.ProblemVo;
+import com.blog.controller.dto.qa.ProblemVo;
 import com.blog.pojo.Problem;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

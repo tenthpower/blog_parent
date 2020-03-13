@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.ColumnDao;
-import com.blog.dto.article.ColumnVo;
+import com.blog.controller.dto.article.ColumnVo;
 import com.blog.pojo.Column;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

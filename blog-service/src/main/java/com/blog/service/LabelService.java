@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.LabelDao;
-import com.blog.dto.lable.LabelVo;
+import com.blog.controller.dto.lable.LabelVo;
 import com.blog.pojo.Label;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

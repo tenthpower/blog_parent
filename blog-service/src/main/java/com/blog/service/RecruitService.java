@@ -2,7 +2,7 @@ package com.blog.service;
 
 import com.blog.constants.VoConstants;
 import com.blog.dao.RecruitDao;
-import com.blog.dto.recruit.RecruitVo;
+import com.blog.controller.dto.recruit.RecruitVo;
 import com.blog.pojo.Recruit;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

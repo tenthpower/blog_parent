@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.FollowDao;
-import com.blog.dto.user.FollowVo;
+import com.blog.controller.dto.user.FollowVo;
 import com.blog.pojo.Follow;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

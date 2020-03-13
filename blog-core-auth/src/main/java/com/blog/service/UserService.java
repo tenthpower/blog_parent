@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.UserDao;
-import com.blog.dto.user.UserVo;
+import com.blog.controller.dto.user.UserVo;
 import com.blog.pojo.User;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.DateUtil;

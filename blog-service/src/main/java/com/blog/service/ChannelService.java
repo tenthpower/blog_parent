@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.ChannelDao;
-import com.blog.dto.article.ChannelVo;
+import com.blog.controller.dto.article.ChannelVo;
 import com.blog.pojo.Channel;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

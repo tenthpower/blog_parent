@@ -1,6 +1,6 @@
 package com.blog.rest;
 
-import com.blog.dto.gathering.GatheringVo;
+import com.blog.controller.dto.gathering.GatheringVo;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.service.GatheringService;

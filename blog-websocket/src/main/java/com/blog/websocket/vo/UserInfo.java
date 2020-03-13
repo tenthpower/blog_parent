@@ -23,6 +23,6 @@ public class UserInfo implements Serializable {
     /**
      * 是否在线
      */
-    private int isOnline;
+    private Integer isOnline;
 
 }

@@ -1,8 +1,8 @@
 package com.blog.util;
 
 import com.blog.config.EmailConfig;
-import com.blog.dto.rabbitmq.EmailVo;
-import com.blog.dto.rabbitmq.ReceiverPeoperVo;
+import com.blog.controller.dto.rabbitmq.EmailVo;
+import com.blog.controller.dto.rabbitmq.ReceiverPeoperVo;
 import jodd.mail.*;
 import jodd.mail.MailServer.Builder;
 import jodd.net.MimeTypes;

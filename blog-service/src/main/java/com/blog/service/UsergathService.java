@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.UsergathDao;
-import com.blog.dto.gathering.UsergathVo;
+import com.blog.controller.dto.gathering.UsergathVo;
 import com.blog.pojo.Usergath;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

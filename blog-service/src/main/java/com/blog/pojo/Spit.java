@@ -1,6 +1,6 @@
 package com.blog.pojo;
 
-import com.blog.dto.SqlBaseDto;
+import com.blog.controller.dto.SqlBaseDto;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;

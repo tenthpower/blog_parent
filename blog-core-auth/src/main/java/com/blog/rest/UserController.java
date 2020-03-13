@@ -1,6 +1,6 @@
 package com.blog.rest;
 
-import com.blog.dto.user.UserVo;
+import com.blog.controller.dto.user.UserVo;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.service.UserService;

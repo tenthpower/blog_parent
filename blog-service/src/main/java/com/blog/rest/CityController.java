@@ -1,6 +1,6 @@
 package com.blog.rest;
 
-import com.blog.dto.lable.CityVo;
+import com.blog.controller.dto.lable.CityVo;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.service.CityService;

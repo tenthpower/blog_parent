@@ -1,6 +1,6 @@
 package com.blog.rest;
 
-import com.blog.dto.recruit.RecruitVo;
+import com.blog.controller.dto.recruit.RecruitVo;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.service.RecruitService;

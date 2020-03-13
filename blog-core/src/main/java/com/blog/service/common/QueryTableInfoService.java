@@ -1,7 +1,5 @@
 package com.blog.service.common;
 
-import com.blog.dto.core.common.CreateApiByTableReqt;
-import com.blog.dto.core.common.CreateApiByTableResp;
 import com.blog.vo.TableInfoVo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

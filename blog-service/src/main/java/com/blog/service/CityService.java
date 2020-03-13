@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.CityDao;
-import com.blog.dto.lable.CityVo;
+import com.blog.controller.dto.lable.CityVo;
 import com.blog.pojo.City;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

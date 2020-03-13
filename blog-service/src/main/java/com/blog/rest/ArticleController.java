@@ -1,17 +1,13 @@
 package com.blog.rest;
 
-import com.blog.dto.article.ArticleVo;
+import com.blog.controller.dto.article.ArticleVo;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;
 import com.blog.service.ArticleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")

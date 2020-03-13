@@ -1,7 +1,7 @@
 package com.blog.security.auth.login;
 
-import com.blog.dto.user.SysAdminVo;
-import com.blog.dto.user.SysRoleVo;
+import com.blog.controller.dto.user.SysAdminVo;
+import com.blog.controller.dto.user.SysRoleVo;
 import com.blog.security.model.UserContext;
 import com.blog.service.SysAdminService;
 import com.blog.service.SysRoleService;

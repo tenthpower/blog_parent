@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.PlDao;
-import com.blog.dto.qa.PlVo;
+import com.blog.controller.dto.qa.PlVo;
 import com.blog.pojo.Pl;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

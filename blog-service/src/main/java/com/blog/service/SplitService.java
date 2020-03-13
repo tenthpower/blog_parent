@@ -2,7 +2,7 @@ package com.blog.service;
 
 import com.blog.constants.VoConstants;
 import com.blog.dao.SpitDao;
-import com.blog.dto.spit.SpitVo;
+import com.blog.controller.dto.spit.SpitVo;
 import com.blog.pojo.Spit;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

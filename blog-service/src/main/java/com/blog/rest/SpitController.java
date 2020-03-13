@@ -1,6 +1,6 @@
 package com.blog.rest;
 
-import com.blog.dto.spit.SpitVo;
+import com.blog.controller.dto.spit.SpitVo;
 import com.blog.entity.PageResult;
 import com.blog.entity.Result;
 import com.blog.entity.StatusCode;

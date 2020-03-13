@@ -1,7 +1,7 @@
 package com.blog.service.common;
 
-import com.blog.dto.core.common.CreateApiByTableReqt;
-import com.blog.dto.core.common.CreateApiByTableResp;
+import com.blog.controller.dto.core.common.CreateApiByTableReqt;
+import com.blog.controller.dto.core.common.CreateApiByTableResp;
 import com.blog.util.DemoVmHelper;
 import com.blog.vo.TableInfoVo;
 import org.slf4j.Logger;

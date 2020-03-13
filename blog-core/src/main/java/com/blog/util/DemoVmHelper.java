@@ -1,7 +1,5 @@
 package com.blog.util;
 
-import com.blog.dto.core.common.CreateApiByTableReqt;
-import com.blog.dto.core.common.CreateApiByTableResp;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;

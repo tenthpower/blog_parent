@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.FriendDao;
-import com.blog.dto.friend.FriendVo;
+import com.blog.controller.dto.friend.FriendVo;
 import com.blog.pojo.Friend;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

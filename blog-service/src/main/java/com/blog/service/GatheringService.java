@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.GatheringDao;
-import com.blog.dto.gathering.GatheringVo;
+import com.blog.controller.dto.gathering.GatheringVo;
 import com.blog.pojo.Gathering;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

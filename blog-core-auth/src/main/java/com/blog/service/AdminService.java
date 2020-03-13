@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.AdminDao;
-import com.blog.dto.user.AdminVo;
+import com.blog.controller.dto.user.AdminVo;
 import com.blog.pojo.SysAdmin;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

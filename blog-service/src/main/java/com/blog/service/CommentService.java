@@ -1,7 +1,7 @@
 package com.blog.service;
 
 import com.blog.dao.CommentDao;
-import com.blog.dto.article.CommentVo;
+import com.blog.controller.dto.article.CommentVo;
 import com.blog.pojo.Comment;
 import com.blog.util.BeanCopierEx;
 import com.blog.util.IdWorker;

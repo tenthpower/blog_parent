@@ -1,7 +1,7 @@
 package com.blog.sender;
 
 
-import com.blog.dto.rabbitmq.EmailVo;
+import com.blog.controller.dto.rabbitmq.EmailVo;
 import com.blog.receiver.DemoReceiver;
 import com.blog.util.QueueConstant;
 import org.slf4j.Logger;

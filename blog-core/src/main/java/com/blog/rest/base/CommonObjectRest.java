@@ -1,9 +1,8 @@
 package com.blog.rest.base;
 
-import com.blog.dto.core.common.CreateApiByTableReqt;
-import com.blog.dto.core.common.CreateApiByTableResp;
+import com.blog.controller.dto.core.common.CreateApiByTableReqt;
+import com.blog.controller.dto.core.common.CreateApiByTableResp;
 import com.blog.entity.Result;
-import com.blog.entity.StatusCode;
 import com.blog.service.common.CreateApiByTableService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

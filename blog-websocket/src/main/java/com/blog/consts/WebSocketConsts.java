@@ -5,6 +5,16 @@ package com.blog.consts;
  */
 public class WebSocketConsts {
 
+    public final static String USER_STATUS_ONLINE = "在线";
+
+    public final static String USER_STATUS_NOT_ONLINE = "离线";
+
+    public final static String FRIEND_STATUS_BLACK = "黑名单";
+
+    public final static String FRIEND_STATUS_FRIEND = "好友";
+
+    public final static String FRIEND_STATUS_WAIT = "待添加";
+
     public final static String MESSAGE_TYPE_PUBLIC = "public";
 
     public final static String MESSAGE_TYPE_GROUP = "group";

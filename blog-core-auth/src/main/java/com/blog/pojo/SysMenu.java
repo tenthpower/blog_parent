@@ -1,6 +1,6 @@
 package com.blog.pojo;
 
-import com.blog.dto.SqlBaseDto;
+import com.blog.controller.dto.SqlBaseDto;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Entity;
